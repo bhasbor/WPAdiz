@@ -70,7 +70,7 @@ _author   ="(leminski) `https://github.com/leminski`";
    author();
 
    if(argc == 1) {
-      printf("Nessuna opzione: digitAAre -h\n");
+      printf("Nessuna opzione: digitare -h\n");
       return -1;
    }
 
