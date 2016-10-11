@@ -214,7 +214,6 @@ int
 
               else if( *verbose == 0 )          /* Modalità non verbose */
               {
-                author();
                 printf(" [-] Reading file...\n");
 
                 pars_leng_char(read, __info, *&leng);
