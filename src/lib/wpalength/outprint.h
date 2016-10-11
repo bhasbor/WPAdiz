@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "/home/leminski/my/Myproject/+WPAdiz/src/lib/color.h"
+#include "color.h"
 
 void out_add_print(char* word, const unsigned length);
 void out_err_print(char* word, const unsigned length);

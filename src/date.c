@@ -23,7 +23,7 @@
 
 #include <unistd.h>
 
-#include "lib/color.h"
+#include "lib/wpalength/color.h"
 #include "lib/essential.h"
 #include "lib/outerr.h"
 

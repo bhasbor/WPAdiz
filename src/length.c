@@ -23,7 +23,6 @@
 
 #include <unistd.h>
 
-#include "lib/color.h"
 #include "lib/essential.h"
 #include "lib/outerr.h"
 #include "lib/wpalength/outprint.h"
@@ -71,7 +70,7 @@ _author   ="(leminski) `https://github.com/leminski`";
    author();
 
    if(argc == 1) {
-      printf("Nessuna opzione: digitare -h\n");
+      printf("Nessuna opzione: digitAAre -h\n");
       return -1;
    }
 
