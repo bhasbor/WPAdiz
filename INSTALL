@@ -1,0 +1,34 @@
+  -> Visit: `https://github.com/leminski`
+
+[+] Prerequiments:
+
+ -° Compiler gcc
+ -° Utility  make
+
+   **If not installed gcc or make, digit on terminal:
+
+     [Ubuntu 16.04]
+
+      apt install gcc
+      apt install make
+
+     [Ubuntu 15.10 or Inferior]
+
+      apt-get install gcc
+      apt-get install make
+
+[+] Installing:
+
+ - `cd WPAdiz`
+ - `make`
+
+[+] Usage:
+
+ - `cd bin`
+ - `./wpalength -h or ./wpadate -h or ./wpahashword -h`
+
+[+] Upgrade:
+
+ - `cd WPAdiz`
+ - `git pull`
+ - `make`
