@@ -10,11 +10,13 @@
      [Ubuntu 16.04]
 
       apt install gcc
+   or
       apt install make
 
      [Ubuntu 15.10 or Inferior]
 
       apt-get install gcc
+   or
       apt-get install make
 
 [+] Installing:
