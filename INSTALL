@@ -26,7 +26,6 @@
 
 [+] Usage:
 
- - `cd bin`
  - `./wpalength -h or ./wpadate -h or ./wpahashword -h`
 
 [+] Upgrade:
