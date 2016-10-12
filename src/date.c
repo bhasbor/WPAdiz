@@ -152,7 +152,7 @@ _author   ="(leminski) `https://github.com/leminski`";
    } /* End While */
 
    for(; optind < argc; optind++) {
-     if(argv[optind] != "-") {
+     if( strcmp(argv[optind], "-") ) {
         printf("wpadate: Unknow parameter '%s' \nDigit: '-h'\n", argv[optind]);
         return -1;
      }

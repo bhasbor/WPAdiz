@@ -149,12 +149,12 @@ _author   ="(leminski) `https://github.com/leminski`";
                  break;
 
          case '?': default:
-	                 printf("length: Unknow parameter '-%c' \nDigit: '-h'\n",optopt); return -1;
+	                 printf("wpalength: Unknow parameter '-%c' \nDigit: '-h'\n",optopt); return -1;
       }
    }
 
    for(; optind < argc; optind++) {
-     if(argv[optind] != "-") {
+     if( strcmp(argv[optind], "-") ) {
         printf("wpalength: Unknow parameter '%s' \nDigit: '-h'\n", argv[optind]);
         return -1;
      }
@@ -287,6 +287,7 @@ int
          if( ( ( strlen(buffer) - check ) ) < *leng)
             lengshort++;
       }
+      return 0;
   }
 
 int
@@ -301,6 +302,7 @@ int
       if( atoi(buffer) > MAX_INT || atoi(buffer) <= 0) {
          return INVALID_PARAM_L;
       }
+      return 0;
   }
 
 int
@@ -380,6 +382,4 @@ int
       out_print_cancell(&lengshort, &charmax);
 
       remove(".tmpfile");   /* Elimina il file temporaneo creato in precedenza */
-
-      return 0;
   }

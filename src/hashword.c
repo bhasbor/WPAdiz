@@ -165,13 +165,13 @@ _author   ="(leminski) `https://github.com/leminski`";
                   break;
 
          case '?': default:
-                  printf("hashword: Unknow parameter '-%c' \nDigit: '-h'\n", optopt);
+                  printf("wpahashword: Unknow parameter '-%c' \nDigit: '-h'\n", optopt);
                   return -1;
       }
    }
 
    for(; optind < argc; optind++) {
-     if(argv[optind] != "-") {
+     if( strcmp(argv[optind], "-") ) {
         printf("wpahashword: Unknow parameter '%s' \nDigit: '-h'\n", argv[optind]);
         return -1;
      }
