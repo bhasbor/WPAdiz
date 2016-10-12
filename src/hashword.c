@@ -25,7 +25,7 @@
 
 #include "lib/outerr.h"
 #include "lib/essential.h"
-#include "lib/tolower.h"
+#include "lib/wpahashword/tolower.h"
 
  /* Definizione dei vari errori */
 

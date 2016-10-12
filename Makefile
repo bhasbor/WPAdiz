@@ -7,7 +7,7 @@ PROGRAM_HASHWORD = wpahashword
 
 #LIBS FOR PROGRAMM
 
-LIB_TOLOWER   = src/lib/tolower.c
+LIB_TOLOWER   = src/lib/wpahashword/tolower.c
 LIB_ESSENTIAL = src/lib/essential.c
 LIB_OUTERR    = src/lib/outerr.c
 LIB_OUTPRINT  = src/lib/wpalength/outprint.c
