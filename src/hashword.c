@@ -78,7 +78,7 @@ _author   ="(leminski) `https://github.com/leminski`";
       switch(ch) {
 
          case 'h':
-                  if(optind > 1) { usage(argv[0]); return -1; }
+                  if(argc > 1) { usage(argv[0]); return -1; }
                   break;
 
          case 'c':

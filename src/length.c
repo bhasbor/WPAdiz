@@ -92,7 +92,7 @@ _author   ="(leminski) `https://github.com/leminski`";
       switch(ch) {
 
          case 'h':	 /* help */
-	                 if(argc < 3) { usage(argv[0]); return -1; }
+	                 if(argc > 1) { usage(argv[0]); return -1; }
 
          case 'f':	 /* file input */
 	                 __information_file.name_file = optarg;
