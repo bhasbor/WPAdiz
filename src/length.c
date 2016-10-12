@@ -52,7 +52,7 @@ unsigned long charmax = 0;
  void file_size(FILE*, struct _file_information *);
  int  check_if_int(char*);
  int  check_length_save(struct _file_information *, const unsigned*, uint8_t*, uint8_t*);
- int  checkspace(unsigned char*);
+ int  checkspace(char*);
  int  automatic_erase(struct _file_information *, const unsigned*);
 
 int main(int argc, char* argv[]) {
@@ -304,7 +304,7 @@ int
   }
 
 int
-  checkspace(unsigned char* word)
+  checkspace(char* word)
 
   {
 
