@@ -2,4 +2,4 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-void _hash_touplower(char* word, int size, uint8_t check);
+void _hash_touplower(char*, int, uint8_t);

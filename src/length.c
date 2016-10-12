@@ -26,7 +26,6 @@
 #include "lib/essential.h"
 #include "lib/outerr.h"
 #include "lib/wpalength/outprint.h"
-#include "lib/wpalength/color.h"
 
  #define MAX_INT              42978990
 
@@ -215,6 +214,7 @@ int
 
               else if( *verbose == 0 )          /* Modalità non verbose */
               {
+                author();
                 printf(" [-] Reading file...\n");
 
                 pars_leng_char(read, __info, *&leng);

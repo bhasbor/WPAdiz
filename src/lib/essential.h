@@ -29,4 +29,4 @@ const unsigned long  GB;
 
 /* Size file */
 
-void file_print_size(unsigned long size);
+void file_print_size(unsigned long);

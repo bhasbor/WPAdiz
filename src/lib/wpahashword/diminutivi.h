@@ -1,4 +1,4 @@
 #include <string.h>
 #include <stdio.h>
 
-void conc_diminutivi(FILE* read, FILE* write);
+void conc_diminutivi(FILE*, FILE*);
