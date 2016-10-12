@@ -23,7 +23,6 @@
 
 #include <unistd.h>
 
-#include "lib/wpalength/color.h"
 #include "lib/essential.h"
 #include "lib/outerr.h"
 
@@ -242,5 +241,5 @@ void
                     fprintf(write,"%d%s%d%s%d\n",d,type,m,type,y);
 
        
-       printf("\n "YELLOW"[+] Generating output in '%s' "CLOSECOLOR"\n\n", file_o);
+       printf("\n [+] Generating output in '%s'\n\n", file_o);
   }
