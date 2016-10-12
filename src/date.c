@@ -203,21 +203,24 @@ int
   check_param(const char* buff, const uint8_t type)
 
   {
-       if(type == 1)			/* Day */
+       if(type == 1)  { 		/* Day */
           if(atoi(buff) > MAX_DAY || atoi(buff) <= 0)
               return -1;
-
-        if(type == 2)			/* Month */
+       }
+        if(type == 2) {			/* Month */
           if(atoi(buff) > MAX_MONTH || atoi(buff) <= 0)
               return -1;
-
-        if(type == 3)			/* Year */
+       }
+        if(type == 3) {			/* Year */
           if(atoi(buff) > MAX_YEAR || atoi(buff) <= 0)
               return -1;
-
-        if(type == 4)			/* End-Year*/
+       }
+        if(type == 4) {			/* End-Year*/
           if(atoi(buff) > MAX_END_YEAR || atoi(buff) <= 0)
               return -1;
+       }
+
+       return 0;
   }
 
 void

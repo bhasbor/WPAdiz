@@ -382,4 +382,6 @@ int
       out_print_cancell(&lengshort, &charmax);
 
       remove(".tmpfile");   /* Elimina il file temporaneo creato in precedenza */
+
+      return 0;
   }
