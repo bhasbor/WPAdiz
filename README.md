@@ -1,5 +1,7 @@
-#DOWNLOAD:#
-*git clone https://github.com/leminski/WPAdiz.git*
+#WPAdiz
+
+## DOWNLOAD:
+*  git clone https://github.com/leminski/WPAdiz.git*
 
 #*Read file INSTALL for more information.*#
 
@@ -46,7 +48,7 @@ aircrack-ng ;).
 
 Sono disponibili 3 software:
 
-* #wpadate:   (per le date)
+* ##wpadate:   (per le date)
 
  - permette di generare delle date con vari formati e divisioni dei singoli numeri
    (es.)
@@ -58,7 +60,7 @@ Sono disponibili 3 software:
    una parola. Per sapere nello specifico le possibili opzioni, usate l'help
    del software.
 
-* #wpalength:  (per la lunghezza delle parole)
+* ##wpalength:  (per la lunghezza delle parole)
 
  - come detto prima, permette di vedere se nel file sono presenti delle parole
    con meno del numero di caratteri specificato con il parametro -l.
@@ -66,7 +68,7 @@ Sono disponibili 3 software:
    nel file tutte le parole che risultano "non valide :)" per i nostri gusti.
    Vedere nell'help del programma
 
-* #wpahashword: (per la generazione di parole)
+* ##wpahashword: (per la generazione di parole)
 
  - Permette di generare a partire da un file di nomi(o massimo uno in piu),
    delle combinazioni con dei cognomi, oppure con delle date o dei numeri
