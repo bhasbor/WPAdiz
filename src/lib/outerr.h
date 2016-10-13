@@ -26,6 +26,10 @@
  #define INVALID_MONTH     -17
  #define INVALID_YEAR      -18
  #define INVALID_END_YEAR  -19
+ #define MAX_DAY           31
+ #define MAX_MONTH         12
+ #define MAX_YEAR          3000
+ #define MAX_END_YEAR      3000
 
 void outerr_hash(char*, char*, short int);
 void outerr_leng(short int);
