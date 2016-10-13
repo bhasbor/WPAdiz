@@ -52,9 +52,10 @@ Sono disponibili 3 software:
 
  - permette di generare delle date con vari formati e divisioni dei singoli numeri
    (es.)
-        - 1/1/2016
+   
+        - 1/1/2016 
         - 01-02-2016
-        - 1 1 2015    (anche con dei spazi tra loro)
+        - 1 1 2015   (anche con dei spazi tra loro)
 
    Lo slash magari lo si puo cambiare con un altro carattere o addirittura con 
    una parola. Per sapere nello specifico le possibili opzioni, usate l'help
