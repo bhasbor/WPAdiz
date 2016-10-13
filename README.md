@@ -4,10 +4,10 @@ Download digit on terminal:
 
 Read file INSTALL for more information.
 
- # Author: leminski                    #
- # City:   Italy, (Campania)           #
- # email:  atleminski@gmail.com        #
- # Site:   https://github.com/leminski #
+ # Author: leminski
+ # City:   Italy, (Campania)
+ # email:  atleminski@gmail.com
+ # Site:   https://github.com/leminski
 
 [Italiano]:
 
