@@ -30,12 +30,6 @@
 
  #define MAX_INT              42978990
 
- #define ERROR_PARAM_F       -9
- #define ERROR_PARAM_E       -10
- #define INVALID_PARAM_L     -11
- #define INVALID_NUMBER      -12
-
-
  struct _file_information {
                             size_t size_file;              /* Byte size file */
                             char* name_file;               /* Name file */
