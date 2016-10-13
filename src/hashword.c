@@ -29,8 +29,6 @@
 #include "lib/essential.h"
 #include "lib/wpahashword/tolower.h"
 
- /* Definizione dei vari errori */
-
  unsigned int num  = 0;
  unsigned int num2 = 0;
 
