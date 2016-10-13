@@ -3,23 +3,25 @@
 
 #*Read file INSTALL for more information.*#
 
- #Author:# *leminski*
+Author: *leminski*
 
- #City:#   *Italy, (Campania)*
+City:   *Italy, (Campania)*
 
- #Email:#  *atleminski@gmail.com*
+Email:  *atleminski@gmail.com*
 
- # *https://github.com/leminski*#
+*https://github.com/leminski*
+
 -------------------------------------------------
+
 [Italiano]:
 
 
 ####Premessa:####
 
-Questo software non è un passpartou che consente di violare qualsiasi rete di
+**Questo software non è un passpartou che consente di violare qualsiasi rete di
 tipo wireless, o che il risultato sia sempre quello desiderato. Tuttavia puo
 aumentare la percentuale di successo e la velocità con cui creare un dizionario
-di questo tipo.
+di questo tipo.**
 
 L'approccio a questo programma è nato dal fatto che non trovando qualche utility
 che permettesse di generare un tipo di dizionario con delle paroli comuni usate
@@ -44,7 +46,7 @@ aircrack-ng ;).
 
 Sono disponibili 3 software:
 
- * #wpadate:   (per le date)
+* #wpadate:   (per le date)
 
  - permette di generare delle date con vari formati e divisioni dei singoli numeri
    (es.)
@@ -80,4 +82,4 @@ o altro, per avere una maggiore percentuale di successo.
 Inoltre è ancora in fase di "ampliamento"... ma questa versione per il momento
 puo andare piu che bene( nella maggior parte di voi ;) ).
 
-#Per qualsiasi tipo di segnalazione contattatemi a: **atleminski@gmail.com**#
+**Per qualsiasi tipo di segnalazione contattatemi a:** *atleminski@gmail.com*
