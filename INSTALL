@@ -24,6 +24,14 @@
  - `cd WPAdiz`
  - `make`
 
+or to install in the system:
+
+ - `make install`
+
+or to uninstall from system:
+
+ - `make unistall`
+
 [+] Usage:
 
  - `./wpalength -h or ./wpadate -h or ./wpahashword -h`
