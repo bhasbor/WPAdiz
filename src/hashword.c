@@ -31,14 +31,6 @@
 
  /* Definizione dei vari errori */
 
- #define INVALID_PARAM        -3
- #define INVALID_ERR_PAR_NUM  -4
- #define INVALID_ERR_PAR_NUM2 -5
- #define SINTAX_MANY_TRATT    -6  /* Se vengono aggiunti due o piu simboli '-' */
- #define ERROR_PARAM_T        -7
- #define ERROR_PARAM_D        -8
- #define ERROR_OUT            -20
-
  unsigned int num  = 0;
  unsigned int num2 = 0;
 
