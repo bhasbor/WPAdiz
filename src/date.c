@@ -29,17 +29,6 @@
 
  #define DEFAULT_DIZ       "DefaultDate.txt"
 
- #define MAX_DAY           31
- #define MAX_MONTH         12
- #define MAX_YEAR          3000
- #define MAX_END_YEAR      3000
- #define ERROR_PARAM       -15
- #define ERROR_OUT_D       -21
- #define INVALID_DAY       -16
- #define INVALID_MONTH     -17
- #define INVALID_YEAR      -18
- #define INVALID_END_YEAR  -19
-
  /* Prototipi */
  void usage(const char*);
  void formatSave(FILE*, const uint8_t, const uint8_t, const unsigned short, const unsigned short, const uint8_t*, const char*, const char*);
