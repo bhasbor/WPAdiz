@@ -15,7 +15,7 @@ Email:          *atleminski@gmail.com*
 
 -------------------------------------------------
 
-[Italiano]:
+[Italiano] :it:
 
 
 ####Premessa:####
@@ -46,7 +46,7 @@ potrebbe durare poche ore o pochi minuti(Dipende anche dalla potenza del PC).
 Quindi è buona norma controllare prima il tutto, per poi dare in pasto al famoso
 aircrack-ng ;).
 
-Sono disponibili 3 software:
+_Sono disponibili 3 software:_
 
 * ##wpadate:   (per le date)
 
@@ -85,4 +85,4 @@ o altro, per avere una maggiore percentuale di successo.
 Inoltre è ancora in fase di "ampliamento"... ma questa versione per il momento
 puo andare piu che bene( nella maggior parte di voi ;) ).
 
-**Per qualsiasi tipo di segnalazione contattatemi a:** *atleminski@gmail.com*
+**Per qualsiasi tipo di segnalazione contattatemi a:** *atleminski@gmail.com*  :+1:
