@@ -3,11 +3,11 @@
 
 #*Read file INSTALL for more information.*#
 
-Author: *leminski*
+Author:         *leminski*
 
-City:   *Italy, (Campania)*
+City:           *Italy, (Campania)*
 
-Email:  *atleminski@gmail.com*
+Email:          *atleminski@gmail.com*
 
 *https://github.com/leminski*
 
