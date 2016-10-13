@@ -1,5 +1,4 @@
-Download digit on terminal:
-
+DOWNLOAD:
 - git clone https://github.com/leminski/WPAdiz.git
 
 Read file INSTALL for more information.
