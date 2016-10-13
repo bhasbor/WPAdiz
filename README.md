@@ -1,19 +1,20 @@
-####DOWNLOAD:#####
-- git clone https://github.com/leminski/WPAdiz.git
+#DOWNLOAD:#
+*git clone https://github.com/leminski/WPAdiz.git*
 
-Read file INSTALL for more information.
+#*Read file INSTALL for more information.*#
 
- # Author: leminski
+ #Author:# *leminski*
 
- # City:   Italy, (Campania)
+ #City:#   *Italy, (Campania)*
 
- # email:  atleminski@gmail.com
+ #Email:#  *atleminski@gmail.com*
 
- # Site:   https://github.com/leminski
-
+ # *https://github.com/leminski*#
+-------------------------------------------------
 [Italiano]:
 
- Premessa:
+
+####Premessa:####
 
 Questo software non è un passpartou che consente di violare qualsiasi rete di
 tipo wireless, o che il risultato sia sempre quello desiderato. Tuttavia puo
@@ -43,7 +44,7 @@ aircrack-ng ;).
 
 Sono disponibili 3 software:
 
-* Uno per le date (wpadate)
+ * #wpadate:   (per le date)
 
  - permette di generare delle date con vari formati e divisioni dei singoli numeri
    (es.)
@@ -55,7 +56,7 @@ Sono disponibili 3 software:
    una parola. Per sapere nello specifico le possibili opzioni, usate l'help
    del software.
 
-* Uno per la lunghezza delle parole(wpalength)
+* #wpalength:  (per la lunghezza delle parole)
 
  - come detto prima, permette di vedere se nel file sono presenti delle parole
    con meno del numero di caratteri specificato con il parametro -l.
@@ -63,7 +64,7 @@ Sono disponibili 3 software:
    nel file tutte le parole che risultano "non valide :)" per i nostri gusti.
    Vedere nell'help del programma
 
-* Uno per la generazione di parole(wpahashword)
+* #wpahashword: (per la generazione di parole)
 
  - Permette di generare a partire da un file di nomi(o massimo uno in piu),
    delle combinazioni con dei cognomi, oppure con delle date o dei numeri
@@ -79,4 +80,4 @@ o altro, per avere una maggiore percentuale di successo.
 Inoltre è ancora in fase di "ampliamento"... ma questa versione per il momento
 puo andare piu che bene( nella maggior parte di voi ;) ).
 
-Per qualsiasi tipo di segnalazione contattatemi a: atleminski@gmail.com
+#Per qualsiasi tipo di segnalazione contattatemi a: **atleminski@gmail.com**#
