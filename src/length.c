@@ -87,67 +87,71 @@ _author   ="(leminski) `https://github.com/leminski`";
 
       switch(ch) {
 
-         case 'h':	 /* help */
-	                 if(argc > 1) { usage(argv[0]); return -1; }
+         case 'h': /* help */
 
-         case 'f':	 /* file input */
-	                 __information_file.name_file = optarg;
+	          if(argc > 1) { usage(argv[0]); return -1; }
 
-	                 FILE *read;
+         case 'f': /* file input */
 
-	                 read = fopen(__information_file.name_file, "r");
+	          __information_file.name_file = optarg;
 
-                         if(!read) { perror("Error: "); return -1; }
+	          FILE *read;
 
-	                 file_size(read, &__information_file);
+	          read = fopen(__information_file.name_file, "r");
 
-	                 if(__information_file.size_file == '\0') {
+                  if(!read) { perror("Error: "); return -1; }
 
-	                    printf("\n File '%s' vuoto\n", __information_file.name_file);
-	                    return -1;
-	                 }
+	          file_size(read, &__information_file);
+
+	          if(__information_file.size_file == '\0') {
+
+	             printf("\n File '%s' vuoto\n", __information_file.name_file);
+	             return -1;
+	          }
+
                  break;
 
-         case 'l':	 /* lunghezza parola */
-	                 if( check_if_int(optarg) == INVALID_PARAM_L ) {
-	                    outerr_leng(INVALID_PARAM_L, atoi(optarg));
-	                    return -1;
-	                 }
+         case 'l': /* lunghezza parola */
 
-	                 leng = atoi(optarg);
-                 break;
+	          if( check_if_int(optarg) == INVALID_PARAM_L ) {
+	             outerr_leng(INVALID_PARAM_L, atoi(optarg));
+	             return -1;
+	          }
 
-         case 's':	 /* Salvataggio parole di lunghezza inferiore a '-l'*/
-	                 if(verbose == 1) {
-	                    printf("Error: il parametro '-s' non accetta il parametro -v\n");
-	                    return -1;
-	                 }
-	                 whatsave = 0;
-                 break;
+                  leng = atoi(optarg);
+                  break;
 
-         case 'e':	 /* Elimina le parole inferiori al numero specificato con il parametro '-l' */
-                         while(condition[0] != 's' && condition[0] != 'n') {
+         case 's': /* Salvataggio parole di lunghezza inferiore a '-l */
 
-        	            printf("\n "YELLOW"[!] Stai per modificare il file '%s'. Vuoi procedere"CLOSECOLOR" s/n?: ",__information_file.name_file);
-        	            condition[0] = getchar();
-        	         }
+	          whatsave = 0;
+                  break;
 
-        	         if(condition[0] == 's') {
+         case 'e': /* Elimina le parole inferiori al numero specificato con il parametro '-l' */
 
-	                    automatic_erase(&__information_file, &leng);
-	                 }
-	                 else if(condition[0] == 'n') {
-	                    printf("\n Annullato.\n");
-	                    return -1;
-	                 }
-	                 return 0;
+                  while(condition[0] != 's' && condition[0] != 'n') {
+
+       	             printf("\n "YELLOW"[!] Stai per modificare il file '%s'. Vuoi procedere"CLOSECOLOR" s/n?: ",__information_file.name_file);
+        	     condition[0] = getchar();
+        	  }
+
+        	  if(condition[0] == 's') {
+
+	             automatic_erase(&__information_file, &leng);
+	          }
+	          else if(condition[0] == 'n') {
+	              printf("\n Annullato.\n");
+	              return -1;
+	          }
+	          return 0;
 
          case 'v':
-	                 verbose = 1;
+
+	         verbose = 1;
                  break;
 
          case '?': default:
-	                 printf("wpalength: Unknow parameter '-%c' \nDigit: '-h'\n",optopt); return -1;
+
+                 printf("wpalength: Unknow parameter '-%c' \nDigit: '-h'\n",optopt); return -1;
       }
    }
 
