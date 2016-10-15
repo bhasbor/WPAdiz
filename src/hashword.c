@@ -188,6 +188,11 @@ _author   ="(leminski) `https://github.com/leminski`";
      }
    }
 
+   if(outfile == NULL) {
+      outerr_hash(NULL,NULL, ERROR_OUT);
+      return -1;
+   }
+
    if(file == NULL) {
       outerr_hash(NULL, NULL, ERROR_PARAM_F);
       return -1;
