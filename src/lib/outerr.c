@@ -56,16 +56,16 @@ void  /*Programm hashword */
                 printf("wpahashword: ERROR il parametro '-d' non accetta altri parametri\n");
 
                 break;
-          case ERROR_PARAM_C:
-                printf("wpahashword: ERROR il parametro '-c' non è presente\n");
-
-                break;
           case ERROR_BIG:
                 printf("wpahashword: ERROR il primo numero è più grande del secondo\n");
 
                 break;
           case INVALID_PARAM_B:
                 printf("wpahashword: INVALID %d non valido (e.g. 0 or 1 a 255))\n", atoi(buffer));
+
+                break;
+          case ERROR_PARAM_C:
+                printf("wpahashword: ERROR richiesto parametro '-c'\n");
 
                 break;
           case ERROR_PARAM_FILE:

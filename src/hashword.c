@@ -65,10 +65,12 @@ _author   ="(leminski) `https://github.com/leminski`";
       switch(ch) {
 
          case 'h':
+
                   if(argc > 1) { usage(argv[0]); return -1; }
                   break;
 
          case 'c':
+
                   strncpy(temp, optarg, sizeof(temp));
 
                   switch( parser(temp, sizeof(temp), number, number2) ) {
@@ -122,6 +124,7 @@ _author   ="(leminski) `https://github.com/leminski`";
 
                   break;
          case 'b':
+
                   if( atoi(optarg) < 0 || atoi(optarg) > 255) {
                      outerr_hash(optarg, NULL, INVALID_PARAM_B);
                      return -1;
@@ -137,6 +140,7 @@ _author   ="(leminski) `https://github.com/leminski`";
                   break;
 
          case 'f':
+
                   file = optarg;
 
                   read = fopen(file, "r");
@@ -147,10 +151,12 @@ _author   ="(leminski) `https://github.com/leminski`";
                   break;
 
          case 'd':
+
                   flag_diminutivi = 1;
                   break;
 
          case 'r':
+
                   file_two = optarg;
 
                   read = fopen(file_two, "r");
@@ -161,10 +167,12 @@ _author   ="(leminski) `https://github.com/leminski`";
                   break;
 
          case 'o':
+
                   outfile = optarg;
                   break;
 
          case 't':
+
                   if(file_two != NULL) {
 
                      outerr_hash(NULL, NULL, ERROR_PARAM_T);
@@ -194,11 +202,11 @@ _author   ="(leminski) `https://github.com/leminski`";
    }
 
    if(file == NULL) {
-      outerr_hash(NULL, NULL, ERROR_PARAM_F);
+      outerr_hash(NULL, NULL, ERROR_PARAM_FILE);
       return -1;
    }
 
-   if(flag_diminutivi == 1 && (file_two != NULL || word != NULL || hash == 1)) {
+   if(flag_diminutivi == 1 && (file_two != NULL || hash == 1)) {
       outerr_hash(NULL, NULL, ERROR_PARAM_D);
       return -1;
    }
@@ -264,6 +272,11 @@ int
   concatenation(char* file, char* file_out, char* file_two, char* word, uint8_t* tratt, int16_t* up, uint8_t* flag_diminutivi)
 
   {
+
+       if( word == NULL) {
+          outerr_hash(NULL, NULL, ERROR_PARAM_C);
+          return -1;
+       }
 
        FILE *read, *write;
 
