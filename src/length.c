@@ -156,6 +156,11 @@ _author   ="(leminski) `https://github.com/leminski`";
      }
    }
 
+   if(__information_file.name_file == NULL) {
+      outerr_leng(ERROR_PARAM_F, 0);
+      return -1;
+   }
+
    check_length_save(&__information_file, &leng, &whatsave, &verbose);
 
   return 0;
