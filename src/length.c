@@ -19,6 +19,7 @@
 
 #include <string.h>
 #include <stdint.h>
+#include <locale.h>
 
 #include <unistd.h>
 
@@ -45,7 +46,7 @@ unsigned long charmax = 0;
  void file_size(FILE*, struct _file_information *);
  int  check_if_int(char*);
  int  check_length_save(struct _file_information *, const unsigned*, uint8_t*, uint8_t*);
- int  checkspace(char*);
+ int  checkspace(wchar_t*);
  int  automatic_erase(struct _file_information *, const unsigned*);
 
 int main(int argc, char* argv[]) {
@@ -56,7 +57,7 @@ int main(int argc, char* argv[]) {
     */
 
 _date     ="2016";
-_version  ="v.1.0";
+_version  ="v.1.0.01";
 _programm ="WPAlength";
 _author   ="(leminski) `https://github.com/leminski`";
 
@@ -66,6 +67,8 @@ _author   ="(leminski) `https://github.com/leminski`";
       printf("Nessuna opzione: digitare -h\n");
       return -1;
    }
+
+   setlocale(LC_ALL, "en_US.UTF-8");   /* Codifica Unicode US 8 */
 
    int ch;
    unsigned leng = 0;
@@ -229,17 +232,17 @@ int
       case 0:                                   /* Salva le parole con meno di '-l' caratteri in un file */
              write = fopen(strcat(__info->name_file, "_save.txt"), "w");
 
-             char buffer[9000];
+             wchar_t buffer[9000];
 
              if(!write) { perror(""); return -1; }
 
-              while( fgets(buffer, sizeof(buffer), read) ) {
+              while( fgetws(buffer, sizeof(buffer), read) ) {
                  charmax++;
                  check = checkspace(buffer);
 
-                 if( (strlen(buffer) - check) < *leng) {
+                 if( (wcslen(buffer) - check) < *leng) {
 
-                    fprintf(write,"-°%lu (%u/%u) %s", charmax, (unsigned)(strlen(buffer) - check), *leng, buffer);
+                    fwprintf(write, L"-°%lu (%u/%u) %ls", charmax, (unsigned)( wcslen(buffer) - check), *leng, buffer);
                  }
               } /* End while */
 
@@ -255,20 +258,20 @@ void
   pars_leng_char_verb(FILE* read, struct _file_information *_info, const unsigned* leng)
 
   {
-      char buffer[9000];
+      wchar_t buffer[9000];
 
-      while(fgets(buffer, sizeof(buffer), read) ) {
+      while(fgetws(buffer, sizeof(buffer), read) ) {
          charmax++;
          check = checkspace(buffer);
 
-         if( ( strlen(buffer) - check ) >= *leng) {
-            out_add_print(buffer, (strlen(buffer) - check) );
+         if( ( wcslen(buffer) - check ) >= *leng) {
+            out_add_print(buffer, (wcslen(buffer) - check) );
          }
 
-         if( ( strlen(buffer) - check ) < *leng ) {
+         if( ( wcslen(buffer) - check ) < *leng ) {
 
             lengshort++;
-            out_err_print(buffer, (strlen(buffer) - check) );
+            out_err_print(buffer, (wcslen(buffer) - check) );
          }
       }
   }
@@ -277,13 +280,13 @@ int
   pars_leng_char(FILE* read, struct _file_information *_info, const unsigned* leng)
 
   {
-      char buffer[9000];
+      wchar_t buffer[9000];
 
-      while(fgets(buffer, sizeof(buffer), read) ) {
+      while(fgetws(buffer, sizeof(buffer), read) ) {
          charmax++;
          check = checkspace(buffer);
 
-         if( ( ( strlen(buffer) - check ) ) < *leng)
+         if( ( ( wcslen(buffer) - check ) ) < *leng)
             lengshort++;
       }
       return 0;
@@ -305,16 +308,15 @@ int
   }
 
 int
-  checkspace(char* word)
+  checkspace(wchar_t* word)
 
   {
-
       register unsigned i = 0;
       unsigned trash = 0;
 
-      for(i = 0; i <= strlen(word); i++) {
+      for(i = 0; i <= wcslen(word); i++) {
 
-         if(word[i] == '\0' || word[i] == '\t' || word[i] == '\r')
+         if(word[i] == L'\0' || word[i] == L'\t' || word[i] == L'\r')
             trash++;
       }
 
@@ -325,7 +327,7 @@ int
   automatic_erase(struct _file_information *__info, const unsigned* length)
 
   {
-      char buffer[9000];
+      wchar_t buffer[9000];
 
       FILE *read, *write, *read2, *write2;
 
@@ -353,12 +355,12 @@ int
 
       /* Rilegge il file originale */
 
-      while( fgets(buffer, sizeof(buffer), read) ) {
+      while( fgetws(buffer, sizeof(buffer), read) ) {
 
-         if( ( (int)strlen(buffer) - checkspace(buffer)) >= *length) {
+         if( ( wcslen(buffer) - checkspace(buffer)) >= *length) {
 
             /* Scrive il contenuto nel file temporaneo */
-            fprintf(write,"%s",buffer);
+            fwprintf(write, L"%ls", buffer);
           }
       }
 
@@ -370,10 +372,10 @@ int
       write2 = fopen(__info->name_file, "w");
 
       /* Legge il file temporaneo */
-      while( fgets(buffer, sizeof(buffer), read2) ) {
+      while( fgetws(buffer, sizeof(buffer), read2) ) {
 
          /* Riscrive il contenuto del file temporaneo nel file originale */
-         fprintf(write2, "%s", buffer);
+         fwprintf(write2, L"%ls", buffer);
       }
 
       fclose(read2); fclose(write2);
