@@ -1,7 +1,7 @@
 /*
- *  Copyright (C) 2016 leminski <atleminski@gmail.com> https://github.com/lemin$
+ *  Copyright (C) 2016 leminski <atleminski@gmail.com> https://github.com/leminski
  *
- *  This file is part of WPAdiz 
+ *  This file is part of WPAdiz
  *
  *  WPAdiz is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -17,26 +17,10 @@
  *
  */
 
-#include "tolower.h"
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+#include <ctype.h>
 
-void
-  _hash_touplower(char* word, int size, uint8_t check) {
-
-   /* Maiuscolo */
-   if(check == 0) {
-      /* converte tutto l array in maiuscolo */
-      for(unsigned int i = 0; i <= size; i++) {
-
-         word[i] = toupper( word[i] );
-      }
-   }
-   /* Minuscolo */
-   else if(check == 1) {
-
-     /* converte tutto l array in minuscolo */
-      for(unsigned int i = 0; i <= size; i++) {
-
-         word[i] = tolower( word[i] );
-      }
-   }
- }
+int write_file(char*, char*, char*, int16_t*, char*, uint8_t*, uint8_t, unsigned*, unsigned*);
+void _hash_touplower(char*, int, uint8_t);

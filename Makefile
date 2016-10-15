@@ -11,7 +11,7 @@ PERC            = /usr/local/bin/
 
 #LIBS FOR PROGRAMM
 
-LIB_TOLOWER   = src/lib/wpahashword/tolower.c
+LIB_WRITE_FILE= src/lib/wpahashword/write_file.c
 LIB_ESSENTIAL = src/lib/essential.c
 LIB_OUTERR    = src/lib/outerr.c
 LIB_OUTPRINT  = src/lib/wpalength/outprint.c
@@ -23,7 +23,7 @@ all:
 
 	$(CC) $(CLFAGS) src/date.c $(LIB_ESSENTIAL) $(LIB_OUTERR) -o $(PROGRAM_DATE)
 
-	$(CC) $(CLFAGS) src/hashword.c $(LIB_ESSENTIAL) $(LIB_OUTERR) $(LIB_TOLOWER) $(LIB_DIMINUTIVI) -o $(PROGRAM_HASHWORD)
+	$(CC) $(CLFAGS) src/hashword.c $(LIB_ESSENTIAL) $(LIB_OUTERR) $(LIB_WRITE_FILE) $(LIB_DIMINUTIVI) -o $(PROGRAM_HASHWORD)
 install:
 
 	mv $(PROGRAM_HASHWORD) $(PERC)

@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2016 leminski <atleminski@gmail.com> https://github.com/lemin$
+ *  Copyright (C) 2016 leminski <atleminski@gmail.com> https://github.com/leminski
  *
  *  This file is part of WPAdiz
  *
@@ -17,8 +17,6 @@
  *
  */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
 
@@ -28,7 +26,7 @@
 #include "lib/outerr.h"
 #include "lib/wpalength/outprint.h"
 
- #define MAX_INT              42978990
+ #define MAX 42978990
 
  struct _file_information {
                             size_t size_file;              /* Byte size file */
@@ -96,6 +94,8 @@ _author   ="(leminski) `https://github.com/leminski`";
 
 	                 read = fopen(__information_file.name_file, "r");
 
+                         if(!read) { perror("Error: "); return -1; }
+
 	                 file_size(read, &__information_file);
 
 	                 if(__information_file.size_file == '\0') {
@@ -107,7 +107,7 @@ _author   ="(leminski) `https://github.com/leminski`";
 
          case 'l':	 /* lunghezza parola */
 	                 if( check_if_int(optarg) == INVALID_PARAM_L ) {
-	                    outerr_leng(INVALID_PARAM_L);
+	                    outerr_leng(INVALID_PARAM_L, atoi(optarg));
 	                    return -1;
 	                 }
 
@@ -148,7 +148,8 @@ _author   ="(leminski) `https://github.com/leminski`";
       }
    }
 
-   for(; optind < argc; optind++) {
+   for( ; optind < argc; optind++) {
+
      if( strcmp(argv[optind], "-") ) {
         printf("wpalength: Unknow parameter '%s' \nDigit: '-h'\n", argv[optind]);
         return -1;
@@ -165,14 +166,15 @@ void
   usage(const char* ptr)
 
   {
-       fprintf(stderr, " Usage: %s -f <fileinput> -l <maxlengthchar> -[OPTIONAL_PARAMETER..]\n\n"
-              " Parameters:\n\n"
-              " -f :   File da analizzare\n"
-              " -l :   Lunghezza minima di ogni singola parola\n\n"
-              " Optional Parameters:\n\n"
-              " -v :   Modalità verbose. Visualizza ogni singola parola\n"
-              " -s :   Salva le parole inferiori al numero indicato con -l in un file\n"
-              " -e :   Elimina nel file originale le parole inferiori indicate dal parametro '-l'\n\n", ptr);
+        fprintf(stderr, " Usage: %s -f <fileinput> -l <maxlengthchar> -[OPTIONAL_PARAMETER..]\n\n"
+                        " Parameters:\n\n"
+                        " -f :   File da analizzare\n"
+                        " -l :   Lunghezza minima di ogni singola parola\n\n"
+                        " Optional Parameters:\n\n"
+                        " -v :   Modalità verbose. Visualizza ogni singola parola\n"
+                        " -s :   Salva le parole inferiori al numero indicato con -l in un file\n"
+                        " -e :   Elimina nel file originale le parole inferiori indicate dal parametro '-l'\n\n", ptr);
+        exit(0);
   }
 
 void
@@ -194,14 +196,12 @@ int
 
    read = fopen(__info->name_file, "r");
 
-   if(!read) { perror(" "); return -1; }
-
    switch( *boolean ) {                         /* Output sullo stdin(schermo) */
 
       case 1:
               if( *verbose == 1 )               /* Modalità verbose */
               {
-                sleep(1);                       /* Blocca per 2 secondi */  
+                sleep(1);                       /* Blocca per 2 secondi */
 
                 pars_leng_char_verb(read, __info, *&leng);
                 fclose(read);
@@ -293,7 +293,7 @@ int
          return INVALID_NUMBER;
       }
 
-      if( atoi(buffer) > MAX_INT || atoi(buffer) <= 0) {
+      if( atoi(buffer) > MAX || atoi(buffer) <= 0) {
          return INVALID_PARAM_L;
       }
       return 0;

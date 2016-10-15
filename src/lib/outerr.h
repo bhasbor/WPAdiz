@@ -1,14 +1,18 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /* Define for programm hashword */
 
- #define INVALID_PARAM        -3  /* Errore di sintassi nell input digitato */
- #define INVALID_ERR_PAR_NUM  -4  /* Errore di sintassi nell input immesso nel primo parametro */
- #define INVALID_ERR_PAR_NUM2 -5  /* Errore di sintassi nell input immesso nel secondo parametro */
+ #define INVALID_PARAM        -3
+ #define INVALID_ERR_PAR_NUM  -4
+ #define INVALID_ERR_PAR_NUM2 -5
  #define SINTAX_MANY_TRATT    -6  /* Se vengono aggiunti due o piu simboli '-' */
  #define ERROR_PARAM_T        -7
  #define ERROR_PARAM_D        -8
  #define ERROR_PARAM_C        -9
+ #define INVALID_PARAM_B      -21
+ #define ERROR_PARAM_FILE     -22
+ #define ERROR_BIG            -10
  #define ERROR_OUT            -20
 
  /* Define for programm legth */
@@ -32,5 +36,5 @@
  #define MAX_END_YEAR      3000
 
 void outerr_hash(char*, char*, short int);
-void outerr_leng(short int);
+void outerr_leng(short int, unsigned int);
 void outerr_date(short int, char*);

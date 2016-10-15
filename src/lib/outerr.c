@@ -6,7 +6,7 @@
 */
 
 /*
- *  Copyright (C) 2016 leminski <atleminski@gmail.com> https://github.com/lemin$
+ *  Copyright (C) 2016 leminski <atleminski@gmail.com> https://github.com/leminski
  *
  *  This file is part of WPAdiz
  *
@@ -33,60 +33,72 @@ void  /*Programm hashword */
        switch(_flag_err) {
 
           case INVALID_PARAM:
-                printf("[INVALID]: in questa sintassi, \"%s\" e \"%s\" non sono numeri.\n", buffer, buffer2);
+                printf("wpahashword: INVALID in questa sintassi, \"%s\" e \"%s\" non sono numeri.\n", buffer, buffer2);
 
                 break;
           case INVALID_ERR_PAR_NUM:
-                printf("[INVALID]: in questa sintassi, \"%s\" non e un numero.\n", buffer);
+                printf("wpahashword: INVALID in questa sintassi, \"%s\" non e un numero.\n", buffer);
 
                 break;
           case INVALID_ERR_PAR_NUM2:
-                printf("[INVALID]: in questa sintassi, \"%s\" non e un numero.\n", buffer2); 
+                printf("wpahashword: INVALID in questa sintassi, \"%s\" non e un numero.\n", buffer2);
 
                 break;
           case SINTAX_MANY_TRATT:
-                printf("[SINTAX]: inserting too many '-' in parameter '-c'\n");
+                printf("wpahashword: SINTAX inserting too many '-' in parameter '-c'\n");
 
                 break;
           case ERROR_PARAM_T:
-                printf("[ERROR]: non e ammesso il parametro '-c'\n");
+                printf("wpahashword: ERROR non e ammesso il parametro '-r'\n");
 
                 break;
           case ERROR_PARAM_D:
-                printf("[ERROR]: il parametro '-d' non accetta altri parametri\n");
+                printf("wpahashword: ERROR il parametro '-d' non accetta altri parametri\n");
 
                 break;
           case ERROR_PARAM_C:
-                printf("[ERROR]: il parametro '-c' non è presente\n");
+                printf("wpahashword: ERROR il parametro '-c' non è presente\n");
+
+                break;
+          case ERROR_BIG:
+                printf("wpahashword: ERROR il primo numero è più grande del secondo\n");
+
+                break;
+          case INVALID_PARAM_B:
+                printf("wpahashword: INVALID %d non valido (e.g. 0 or 1 a 255))\n", atoi(buffer));
+
+                break;
+          case ERROR_PARAM_FILE:
+                printf("wpahashword: ERROR insert file with parameter '-f'\n");
 
                 break;
           case ERROR_OUT:
-                printf("[ERROR]: inserie il file su cui salvare le operazioni\n");
+                printf("wpahashword: ERROR inserie il file su cui salvare le operazioni\n");
 
                 break;
        }
   }
 
 void  /* Programm length */
-  outerr_leng(short int _flag_err)
+  outerr_leng(short int _flag_err, unsigned int number)
 
   {
        switch(_flag_err) {
 
           case INVALID_PARAM_L:
-                printf("[INVALID]: invalid value in parameter '-l'\n");
+                printf("wpalength: INVALID value %u in parameter '-l'\n", number);
 
                 break;
           case ERROR_PARAM_E:
-                printf("[ERROR]: Il parametro '-e' richiede il parametro '-l'\n");
+                printf("wpalength: ERROR Il parametro '-e' richiede il parametro '-l'\n");
 
                 break;
           case ERROR_PARAM_F:
-                printf("[ERROR]: insert your file\n");
+                printf("wpalength: ERROR insert your file\n");
 
                 break;
           case INVALID_NUMBER:
-                printf("[INVALID]: -l accetta parametri numerici\n");
+                printf("wpalength: INVALID -l accetta parametri numerici\n");
 
                 break;
        }
@@ -99,27 +111,27 @@ void  /* Programm date */
        switch(_flag_err) {
 
           case ERROR_PARAM:
-                printf("[ERROR]`: '%s' non è un numero o è un numero minore di 0\n", param);
+                printf("wpadate: ERROR '%s' non è un numero o è un numero minore di 0\n", param);
 
                 break;
           case INVALID_DAY:
-                printf("[INVALID]: '-d' max 31 e min 1\n");
+                printf("wpadate: INVALID '-d' max 31 e min 1\n");
 
                 break;
           case INVALID_MONTH:
-                printf("[INVALID]: '-m' max 12 e min 1\n");
+                printf("wpadate: INVALID '-m' max 12 e min 1\n");
 
                 break;
           case INVALID_YEAR:
-                printf("[INVALID]: '-y' max 3000 e min 1\n");
+                printf("wpadate: INVALID '-y' max 3000 e min 1\n");
 
                 break;
           case INVALID_END_YEAR:
-                printf("[INVALID]: '-Y' max 3000, min 1 e più di '-y'\n");
+                printf("wpadate: INVALID '-Y' max 3000, min 1 e più di '-y'\n");
 
                 break;
           case ERROR_OUT_D:
-                printf("[ERROR]: inserie il file su cui salvare le operazioni\n");
+                printf("wpadate: ERROR inserie il file su cui salvare le operazioni\n");
 
                 break;
        }

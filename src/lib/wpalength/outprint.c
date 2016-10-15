@@ -1,7 +1,7 @@
 /*
- *  Copyright (C) 2016 leminski <atleminski@gmail.com> https://github.com/lemin$
+ *  Copyright (C) 2016 leminski <atleminski@gmail.com> https://github.com/leminski
  *
- *  This file is part of WPAdiz 
+ *  This file is part of WPAdiz
  *
  *  WPAdiz is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by

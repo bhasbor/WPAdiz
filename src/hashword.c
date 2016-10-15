@@ -1,7 +1,7 @@
 /*
- *  Copyright (C) 2016 leminski <atleminski@gmail.com> https://github.com/lemin$
+ *  Copyright (C) 2016 leminski <atleminski@gmail.com> https://github.com/leminski
  *
- *  This file is part of WPAdiz 
+ *  This file is part of WPAdiz
  *
  *  WPAdiz is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -17,17 +17,11 @@
  *
  */
 
-#include <stdio.h>
-#include <stdint.h>
-#include <ctype.h>
-#include <string.h>
-#include <stdlib.h>
-
 #include <unistd.h>
 
 #include "lib/outerr.h"
 #include "lib/essential.h"
-#include "lib/wpahashword/tolower.h"
+#include "lib/wpahashword/write_file.h"
 
  unsigned int num  = 0;
  unsigned int num2 = 0;
@@ -35,10 +29,9 @@
  /* Prototipi */
  void usage(char*);
  void conc_diminutivi(FILE*, FILE*);
- void control(char*, char*, char*, char*, uint8_t*, uint8_t*, uint8_t*, uint8_t*);
+ int  control(char*, char*, char*, char*, uint8_t*, uint8_t*, int16_t*, uint8_t*);
  int  parser(char*, const unsigned int, char*, char*);
- int  concatenation(char*, char*, char*, char*, uint8_t*, uint8_t*, uint8_t*);
- int  hashchars(char*, char*, uint8_t*);
+ int  concatenation(char*, char*, char*, char*, uint8_t*, int16_t*, uint8_t*);
 
 int main (int argc, char* argv[]) {
 
@@ -48,7 +41,7 @@ int main (int argc, char* argv[]) {
     */
 
 _date     ="2016";
-_version  ="v.1.0";
+_version  ="v.1.1";
 _programm ="WPAhashword";
 _author   ="(leminski) `https://github.com/leminski`";
 
@@ -60,12 +53,14 @@ _author   ="(leminski) `https://github.com/leminski`";
       return -1;
    }
 
+   FILE *read;
    int ch;
-   uint8_t hash = 0, _tratt = 0, up = 0, flag_diminutivi = 0;
-   char *word = NULL, *file_o = NULL, *file_two = NULL, *outfile = NULL, *essid = NULL, temp[9000], number[9000], number2[9000];
+   uint8_t hash = 0, _tratt = 0, flag_diminutivi = 0;
+   int16_t up = -1;
+   char *word = NULL, *file = NULL, *file_two = NULL, *outfile = NULL, temp[9000], number[9000], number2[9000];
 
    opterr = 0;
-   while( (ch = getopt(argc, argv, "hf:r:c:o:tbd")) != -1) {
+   while( (ch = getopt(argc, argv, "hf:r:c:o:tb:d")) != -1) {
 
       switch(ch) {
 
@@ -121,17 +116,34 @@ _author   ="(leminski) `https://github.com/leminski`";
 
                   if(num > num2) {
 
-                     printf("Error: il primo numero è piu grande del secondo!\n");
+                     outerr_hash(NULL, NULL, ERROR_BIG);
                      return -1;
                   }
 
                   break;
          case 'b':
-                  up = 1;
+                  if( atoi(optarg) < 0 || atoi(optarg) > 255) {
+                     outerr_hash(optarg, NULL, INVALID_PARAM_B);
+                     return -1;
+                  }
+
+                  if( atoi(optarg) == 0) {
+                     up = 0;
+                  }
+                  else {
+                     up = atoi(optarg);
+                  }
+
                   break;
 
          case 'f':
-                  file_o = optarg;
+                  file = optarg;
+
+                  read = fopen(file, "r");
+
+                  if(!read) { perror("Error: "); return -1; }
+
+                  fclose(read);
                   break;
 
          case 'd':
@@ -140,6 +152,12 @@ _author   ="(leminski) `https://github.com/leminski`";
 
          case 'r':
                   file_two = optarg;
+
+                  read = fopen(file_two, "r");
+
+                  if(!read) { perror("Error: "); return -1; }
+
+                  fclose(read);
                   break;
 
          case 'o':
@@ -162,24 +180,25 @@ _author   ="(leminski) `https://github.com/leminski`";
       }
    }
 
-   for(; optind < argc; optind++) {
+   for( ; optind < argc; optind++) {
+
      if( strcmp(argv[optind], "-") ) {
         printf("wpahashword: Unknow parameter '%s' \nDigit: '-h'\n", argv[optind]);
         return -1;
      }
    }
 
-   if(flag_diminutivi == 1 && (file_two != NULL || word != NULL || hash == 1 || essid != NULL)) {
+   if(file == NULL) {
+      outerr_hash(NULL, NULL, ERROR_PARAM_F);
+      return -1;
+   }
+
+   if(flag_diminutivi == 1 && (file_two != NULL || word != NULL || hash == 1)) {
       outerr_hash(NULL, NULL, ERROR_PARAM_D);
       return -1;
    }
 
-   if(outfile == NULL) {
-      outerr_hash(NULL, NULL, ERROR_OUT);
-      return -1;
-   }
-
-   control(&*word, &*file_o, &*file_two, &*outfile, &hash, &_tratt, &up, &flag_diminutivi);
+   control(word, file, file_two, outfile, &hash, &_tratt, &up, &flag_diminutivi);
 
   return 0;
 
@@ -204,255 +223,76 @@ void
              "-r :   Secondo file di input, e quindi si possono concatenare le parole\n "
              "       dei due file\n "
              "-t :   Disposizioni di tutte le parole contenute in un singolo file\n "
-             "-b :   Flag per avere tutte le parole in maiuscolo\n\n", ptr);
+             "-b :   Flag (valore):\n "
+             "                     0       : per avere tutte le parole in maiuscolo\n "
+             "                     1 a 255 : indica a quale posizione si vuole avere\n "
+             "                               la lettera in maiuscolo. Se si indica un\n "
+             "                               valore che è superiore ad una parola, viene\n "
+             "                               omesso.\n\n", ptr);
 
-     exit(0);
+      exit(0);
   }
 
-void
-  control(char* word, char* file_in, char* file_two, char* file_out, uint8_t* boolean /* 1 - hash, 0 - concatenation */, uint8_t* tratt, uint8_t* up, uint8_t* flag_diminutivi)
+int
+  control(char* word, char* file_in, char* file_two, char* file_out, uint8_t* boolean /* 1 - hash, 0 - concatenation */, uint8_t* tratt, int16_t* up, uint8_t* flag_diminutivi)
 
   {
-      if(*boolean == 1)
-         hashchars(&*file_in, &*file_out, *&up);
+      if( *boolean == 1 ) {
 
-      else if(*boolean == 0)
-         concatenation(&*file_in, &*file_out, &*file_two, &*word, *&tratt, *&up, *&flag_diminutivi);
+         printf(" * Flag concatenation activated\n");
+
+         write_file(file_in, file_out, NULL, *&up, NULL, NULL, 1, NULL, NULL);
+
+         printf("\n [+] File '%s' created.\n", file_out);
+
+         return 0;
+      }
+      else if( *boolean == 0 ) {
+
+         concatenation(file_in, file_out, file_two, word, tratt, *&up, flag_diminutivi);
+      }
+
+      return 0;
   }
 
 int
-  hashchars(char* file, char* file_out, uint8_t* up) {
+  concatenation(char* file, char* file_out, char* file_two, char* word, uint8_t* tratt, int16_t* up, uint8_t* flag_diminutivi)
 
-   char buffer[9000], buffer2[9000];
+  {
 
-   FILE *read, *read2, *write;
+       FILE *read, *write;
 
-   read = fopen(&*file, "r");
-   read2 = fopen(&*file, "r");
+       read = fopen(&*file, "r");
 
-   if(!read || !read2) { perror("Error: "); return -1; }
+       write = fopen(file_out, "aw");
 
-   write = fopen(&*file_out, "aw");
+       printf(" * Flag concatenation activated\n");
 
-   printf(" * Flag hashword activated\n\n");
+       if(*flag_diminutivi == 1) {
 
-   while( (fscanf(read, "%s", buffer) ) != EOF) {
+          printf("  \\\n");
+          printf("   \\_(->) * Flag diminutivi activated\n\n");
 
-      while( (fscanf(read2, "%s", buffer2) ) != EOF) {
+          printf(" [+] File '%s' create.\n\n", file_out);
 
-         if( strcmp(buffer, buffer2) ) {
+          conc_diminutivi(read, write);
 
-            if(*up == 0) {
+          fclose(read); fclose(write);
 
-               fprintf(write, "%s%s\n", buffer, buffer2);
-               fprintf(write, "%se%s\n", buffer, buffer2);
-               fprintf(write, "%sE%s\n", buffer, buffer2);
-            }
-            else if(*up == 1) {
+          return 0;
+       }
 
-               buffer[0] = toupper(buffer[0]);
+       int error_up = write_file(file, file_out, file_two, *&up, word, *&tratt, 0, &num, &num2);
 
-	       fprintf(write, "%se%s\n", buffer, buffer2);
-               fprintf(write, "%se%s\n", buffer, buffer2);
-               fprintf(write, "%sE%s\n", buffer, buffer2);
+       if(error_up > 0)
+          printf("\n [+] File '%s' created: `(%u words omitted) (why? Didit -h for help)`.\n", file_out, error_up);
 
-               buffer[0] = tolower(buffer[0]);
+       else
+          printf("\n [+] File '%s' created.\n", file_out);
 
-               buffer2[0] = toupper(buffer2[0]);
+     return 0;
+  }
 
-               fprintf(write, "%s%s\n", buffer, buffer2);
-               fprintf(write, "%se%s\n", buffer, buffer2);
-               fprintf(write, "%sE%s\n", buffer, buffer2);
-
-               buffer[0] = toupper(buffer[0]);
-
-               fprintf(write, "%s%s\n", buffer, buffer2);
-               fprintf(write, "%se%s\n", buffer, buffer2);
-               fprintf(write, "%sE%s\n", buffer, buffer2);
-
-               buffer[0] = tolower(buffer[0]);
-               buffer2[0] = tolower(buffer2[0]);
-
-               _hash_touplower(buffer, sizeof(buffer), 0);
-               _hash_touplower(buffer2, sizeof(buffer), 0);
-
-               fprintf(write, "%s%s\n", buffer, buffer2);
-               fprintf(write, "%se%s\n", buffer, buffer2);
-               fprintf(write, "%sE%s\n", buffer, buffer2);
-
-               _hash_touplower(buffer, sizeof(buffer), 1);
-               _hash_touplower(buffer2, sizeof(buffer), 1);
-            }
-         }
-      }
-
-      rewind(read2);
-   }
-
-   printf(" File '%s' create!\n", file_out);
-
-   fclose(read); fclose(read2); fclose(write);
-
-   return 0;
- }
-
-int
-  concatenation(char* file, char* file_out, char* file_two, char* word, uint8_t* tratt, uint8_t* up, uint8_t* flag_diminutivi) {
-
-   char buffer[9000], buffer2[9000];
-
-   FILE *read, *read2, *write;
-
-   read = fopen(&*file, "r");
-
-   if(!read) { perror("Error: "); return -1; }
-
-   write = fopen(&*file_out, "aw");
-
-   printf(" * Flag concatenation activated\n");
-
-   if(*flag_diminutivi == 1) {
-
-      printf("  \\\n");
-      printf("   \\_(->) * Flag diminutivi activated\n\n");
-
-      printf(" [+] File '%s' create.\n\n", file_out);
-
-      conc_diminutivi(read, write);
-
-      fclose(read); fclose(write);
-
-      return 0;
-   }
-
-   switch( *tratt ) {
-
-/**/  case 1:               				/* Con creazioni di numeri che vanno dal numero prima del '-' fino al numero che va dopo al '-' */
-             switch( *up ) {                   		/* Flag Maiuscolo */
-
-                case 0:                        		/* Non maiuscolo */
-                       if(&*file_two == NULL) {
-
-                          while( (fscanf(read, "%s", buffer) ) != EOF) {
-
-                             for(unsigned int i = num; i <= num2; i++) {
-
-                                fprintf(write, "%s%s%u\n", buffer, buffer2, i);
-                             }
-                          }
-                       }
-                       else {
-
-                          read2 = fopen(file_two, "r");
-
-                          while( (fscanf(read, "%s", buffer) ) != EOF) {
-
-                             while( (fscanf(read2, "%s", buffer2) ) != EOF) {
-
-                                for(unsigned int i = num; i <= num2; i++) {
-
-                                   fprintf(write, "%s%s%u\n", buffer, buffer2, i);
-                                }
-                             }
-                             rewind(read2);
-                          }
-                          fclose(read2);
-                       }
-                case 1:                        		/* Maiuscolo */
-                       if(&*file_two == NULL) {
-
-                          while( (fscanf(read, "%s", buffer) ) != EOF) {
-
-                             for(unsigned int i = num; i <= num2; i++) {
-
-                                _hash_touplower(buffer, sizeof(buffer), 0);
-
-                                fprintf(write, "%s%u\n", buffer, i);
-                             }
-                          }
-                       }
-                       else {
-
-                          read2 = fopen(file_two, "r");
-
-                          while( (fscanf(read, "%s", buffer) ) != EOF) {
-
-                             while( (fscanf(read2, "%s", buffer2) ) != EOF) {
-
-                                for(unsigned int i = num; i <= num2; i++) {
-
-                                   _hash_touplower(buffer, sizeof(buffer), 0);
-                                   _hash_touplower(buffer2, sizeof(buffer2), 0);
-
-                                   fprintf(write, "%s%s%u\n", buffer, buffer2, i);
-                                }
-                             }
-                             rewind(read2);
-                          }
-                          fclose(read2);
-                       }
-             }
-/**/  case 0:               				/* FLag senza processamento dei numeri */
-             switch( *up ) {                            /* Flag Maiuscolo */
-
-                case 0:                                 /* Non maiuscolo */
-                       if(&*file_two == NULL) {
-
-                          while( (fscanf(read, "%s", buffer) ) != EOF) {
-
-                             fprintf(write, "%s%s%s\n", buffer, buffer2, word);
-                          }
-                       }
-                       else {
-
-                          read2 = fopen(file_two, "r");
-
-                          while( (fscanf(read, "%s", buffer) ) != EOF) {
-
-                             while( (fscanf(read2, "%s", buffer2) ) != EOF) {
-
-                                   fprintf(write, "%s%s%s\n", buffer, buffer2, word);
-                             }
-                             rewind(read2);
-                          }
-                          fclose(read2);
-                       }
-                case 1:                                 /* Maiuscolo */
-                       if(&*file_two == NULL) {
-
-                          while( (fscanf(read, "%s", buffer) ) != EOF) {
-
-                             _hash_touplower(buffer, sizeof(buffer), 0);
-
-                             fprintf(write, "%s%s\n", buffer, word);
-                          }
-                       }
-                       else {
-
-                          read2 = fopen(file_two, "r");
-
-                          while( (fscanf(read, "%s", buffer) ) != EOF) {
-
-                             while( (fscanf(read2, "%s", buffer2) ) != EOF) {
-
-                                   _hash_touplower(buffer, sizeof(buffer), 0);
-                                   _hash_touplower(buffer2, sizeof(buffer2), 0);
-
-                                   fprintf(write, "%s%s%s\n", buffer, buffer2, word);
-                             }
-                             rewind(read2);
-                          }
-                          fclose(read2);
-                       }
-             }
-   }
-
-   printf("\n [+] File '%s' create.\n", file_out);
-
-   fclose(read); fclose(write);
-
-   return 0;
- }
 
 int
   parser(char* word, const unsigned int size, char* number, char* number2) {

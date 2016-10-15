@@ -1,7 +1,7 @@
 /*
- *  Copyright (C) 2016 leminski <atleminski@gmail.com> https://github.com/lemin$
+ *  Copyright (C) 2016 leminski <atleminski@gmail.com> https://github.com/leminski
  *
- *  This file is part of WPAdiz 
+ *  This file is part of WPAdiz
  *
  *  WPAdiz is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -17,10 +17,8 @@
  *
  */
 
-#include <stdio.h>
 #include <stdint.h>
 #include <string.h>
-#include <stdlib.h>
 
 #include <unistd.h>
 
@@ -120,14 +118,8 @@ _author   ="(leminski) `https://github.com/leminski`";
 
                      break;
             case 'z' :
-                      if( (atoi(optarg)) == 1) {
-                         _zero = 1;
-                      }
-                      else if( (atoi(optarg)) == 2) {
-                         _zero = 2;
-                      }
-                      else if( (atoi(optarg)) == 3) {
-                         _zero = 3;
+                      if( atoi(optarg) >= 1 && atoi(optarg) <= 3) {
+                         _zero = atoi(optarg);
                       }
                       else {
                          printf(" Inserisci uno dei tre valori (1, 2, 3). Digita '-h'.\n");
@@ -141,7 +133,8 @@ _author   ="(leminski) `https://github.com/leminski`";
       }
    } /* End While */
 
-   for(; optind < argc; optind++) {
+   for( ; optind < argc; optind++) {
+
      if( strcmp(argv[optind], "-") ) {
         printf("wpadate: Unknow parameter '%s' \nDigit: '-h'\n", argv[optind]);
         return -1;
@@ -162,31 +155,33 @@ _author   ="(leminski) `https://github.com/leminski`";
 } /* End main */
 
 void
-  usage(const char* ptr) {
+  usage(const char* ptr)
 
-   fprintf(stderr, " Usage: %s -d <day> -m <month> -y <year> -Y <endyear> -f <format> -o <file_out> -[OPTIONAL_PARAMETERS..]\n\n "
-   	  "Parameters:\n\n "
-   	  "-d :  Giorno\n "
-  	  "-m :  Mese\n "
-   	  "-y :  Anno di inizio(Se non viene immesso,assume il valore 0)\n "
-  	  "-Y :  Anno di fine\n "
-    	  "-f :  Specifica il formato:(es.1/2/1234, 1-2-1234, 121234)\n "
-   	  "-o :  File out\n\n "
-          "Optional Parameters:\n\n "
-          "-D :  Viene creato un file a partire dal 1 1 1980 fino a 31 12 2016\n "
-          "      Per usarlo, bisogna inserire solo questo parametro in\n "
-          "      quanto è un parametro di default\n\n "
-          "-z :  valore tra:\n "
-          "      1  : Con i giorni da 1 a 9 con lo 0.          (es.) 01/2/2016\n "
-          "      2  : Con i mesi da 1 a 9 con lo 0.            (es.) 1/02/2016\n "
-          "      3  : Con i mesi e i giorni da 1 a 9 con lo 0. (es.) 01/02/2016\n\n "
-          "Specific Parameters:\n\n "
-          "-d :  Min 1 e Max 31\n "
-          "-m :  Min 1 Max 12\n "
-          "-y :  Min 1 e Max 3000\n "
-          "-Y ;  Min di '-y <valore>' e Max 3000\n\n "
+  {
+       fprintf(stderr, " Usage: %s -d <day> -m <month> -y <year> -Y <endyear> -f <format> -o <file_out> -[OPTIONAL_PARAMETERS..]\n\n "
+               	       "Parameters:\n\n "
+   	  	       "-d :  Giorno\n "
+  	               "-m :  Mese\n "
+                       "-y :  Anno di inizio(Se non viene immesso,assume il valore 0)\n "
+  	               "-Y :  Anno di fine\n "
+    	               "-f :  Specifica il formato:(es.1/2/1234, 1-2-1234, 121234)\n "
+   	               "-o :  File out\n\n "
+                       "Optional Parameters:\n\n "
+                       "-D :  Viene creato un file a partire dal 1 1 1980 fino a 31 12 2016\n "
+                       "      Per usarlo, bisogna inserire solo questo parametro in\n "
+                       "      quanto è un parametro di default\n\n "
+                       "-z :  valore tra:\n "
+                       "      1  : Con i giorni da 1 a 9 con lo 0.          (es.) 01/2/2016\n "
+                       "      2  : Con i mesi da 1 a 9 con lo 0.            (es.) 1/02/2016\n "
+                       "      3  : Con i mesi e i giorni da 1 a 9 con lo 0. (es.) 01/02/2016\n\n "
+                       "Specific Parameters:\n\n "
+                       "-d :  Min 1 e Max 31\n "
+                       "-m :  Min 1 Max 12\n "
+                       "-y :  Min 1 e Max 3000\n "
+                       "-Y ;  Min di '-y <valore>' e Max 3000\n\n "
 
-          "\n (Es.): %s -d 1 -m 1 -y 1900 -Y 2000 -f / -o fileout.txt -z 3\n\n", ptr, ptr);
+                       "\n (Es.): %s -d 1 -m 1 -y 1900 -Y 2000 -f / -o fileout.txt -z 3\n\n", ptr, ptr);
+       exit(0);
  }
 
 int

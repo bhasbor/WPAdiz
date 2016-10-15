@@ -1,7 +1,7 @@
 /*
- *  Copyright (C) 2016 leminski <atleminski@gmail.com> https://github.com/lemin$
+ *  Copyright (C) 2016 leminski <atleminski@gmail.com> https://github.com/leminski
  *
- *  This file is part of WPAdiz 
+ *  This file is part of WPAdiz
  *
  *  WPAdiz is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -27,36 +27,36 @@ void
 
        while( (fscanf(read, "%s", buffer) ) != EOF) {
 
-       int a = strlen(buffer);
+          int a = strlen(buffer);
 
-          if( buffer[a-1] == A) {
+             if( buffer[a-1] == A) {
 
-              buffer[a-1] = 0x00;
-              buffer[a] = 0x00;
+                buffer[a-1] = 0x00;
+                buffer[a] = 0x00;
 
-              fprintf(write, "%s%s\n", buffer, ONA);
-              fprintf(write, "%s%s\n", buffer, INA);
-              fprintf(write, "%s%s\n", buffer, ETTA);
-              fprintf(write, "%s%s\n", buffer, OTTA);
-         }
-         else if( buffer[a-1] == E || buffer[a-1] == I || buffer[a-1] == O || buffer[a-1] == U) {
+                fprintf(write, "%s%s\n", buffer, ONA);
+                fprintf(write, "%s%s\n", buffer, INA);
+                fprintf(write, "%s%s\n", buffer, ETTA);
+                fprintf(write, "%s%s\n", buffer, OTTA);
+             }
+             else if( buffer[a-1] == E || buffer[a-1] == I || buffer[a-1] == O || buffer[a-1] == U) {
 
-              buffer[a-1] = 0x00;
-              buffer[a] = 0x00;
+                buffer[a-1] = 0x00;
+                buffer[a] = 0x00;
 
-              fprintf(write, "%s%s\n", buffer, ONE);
-              fprintf(write, "%s%s\n", buffer, OTTO);
+                fprintf(write, "%s%s\n", buffer, ONE);
+                fprintf(write, "%s%s\n", buffer, OTTO);
 
-              if(buffer[a-2] == 'c') {
-                 buffer[a-2] = 'c';
-                 buffer[a-1] = 'h';
-              }
-              if(buffer[a-2] == 'g') {
-                 buffer[a-1] = 'h';
-              }
+                if(buffer[a-2] == 'c') {
+                   buffer[a-2] = 'c';
+                   buffer[a-1] = 'h';
+                }
+                if(buffer[a-2] == 'g') {
+                   buffer[a-1] = 'h';
+                }
 
-              fprintf(write, "%s%s\n", buffer, INO);
-              fprintf(write, "%s%s\n", buffer, ETTO);         
-         }
-      }
+                fprintf(write, "%s%s\n", buffer, INO);
+                fprintf(write, "%s%s\n", buffer, ETTO);
+             }
+       }
   }
