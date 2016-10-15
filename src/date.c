@@ -143,6 +143,11 @@ _author   ="(leminski) `https://github.com/leminski`";
 
    if(ou == NULL) { outerr_date(ERROR_OUT_D, NULL); return -1; }
 
+   if( da == 0 || mo == 0 || ye == 0 || EY == 0 || fo == NULL) {
+      outerr_date(ERROR_PARAM, NULL);
+      return -1;
+   }
+
    write = fopen(ou, "aw");
 
    if(!write) {    perror(""); return -1;     }
@@ -158,7 +163,7 @@ void
   usage(const char* ptr)
 
   {
-       fprintf(stderr, " Usage: %s -d <day> -m <month> -y <year> -Y <endyear> -f <format> -o <file_out> -[OPTIONAL_PARAMETERS..]\n\n "
+      fprintf(stderr, " Usage: %s -d <day> -m <month> -y <year> -Y <endyear> -f <format> -o <file_out> -[OPTIONAL_PARAMETERS..]\n\n "
                	       "Parameters:\n\n "
    	  	       "-d :  Giorno\n "
   	               "-m :  Mese\n "

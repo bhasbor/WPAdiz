@@ -111,7 +111,7 @@ void  /* Programm date */
        switch(_flag_err) {
 
           case ERROR_PARAM:
-                printf("wpadate: ERROR '%s' non è un numero o è un numero minore di 0\n", param);
+                printf("wpadate: ERROR insert -d -m -y -Y and -f\n");
 
                 break;
           case INVALID_DAY:
