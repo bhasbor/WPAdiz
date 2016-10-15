@@ -273,7 +273,7 @@ int
 
   {
 
-       if( word == NULL) {
+       if( word == NULL && num == 0 && num2 == 0) {
           outerr_hash(NULL, NULL, ERROR_PARAM_C);
           return -1;
        }
