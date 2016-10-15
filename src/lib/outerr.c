@@ -105,7 +105,7 @@ void  /* Programm length */
   }
 
 void  /* Programm date */
-  outerr_date(short int _flag_err, char *param)
+  outerr_date(short int _flag_err, unsigned short* value, unsigned short* value2)
 
   {
        switch(_flag_err) {
@@ -128,6 +128,14 @@ void  /* Programm date */
                 break;
           case INVALID_END_YEAR:
                 printf("wpadate: INVALID '-Y' max 3000, min 1 e più di '-y'\n");
+
+                break;
+          case INVALID_PARAM_EY:
+                printf("wpadate: INVALID value.. %u maggiore di %u\n", *value, *value2);
+
+                break;
+          case INVALID_PARAM_Z:
+                printf("wpadate: INVALID inserisci uno dei 3 valori (1 , 2 , 3)\n");
 
                 break;
           case ERROR_OUT_D:

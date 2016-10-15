@@ -17,8 +17,8 @@
  *
  */
 
-#include <stdint.h>
 #include <string.h>
+#include <stdint.h>
 
 #include <unistd.h>
 
@@ -79,7 +79,7 @@ _author   ="(leminski) `https://github.com/leminski`";
                      return 0;
             case 'd':
                      if(check_param(optarg, 1) == -1) {
-                        outerr_date(INVALID_DAY, NULL);
+                        outerr_date(INVALID_DAY, NULL, NULL);
                         return -1;
                      }
 
@@ -87,7 +87,7 @@ _author   ="(leminski) `https://github.com/leminski`";
                      break;
             case 'm':
                      if(check_param(optarg, 2) == -1) {
-                        outerr_date(INVALID_MONTH, NULL);
+                        outerr_date(INVALID_MONTH, NULL, NULL);
                         return -1;
                      }
 
@@ -95,7 +95,7 @@ _author   ="(leminski) `https://github.com/leminski`";
                      break;
             case 'y':
                      if(check_param(optarg, 3) == -1) {
-                        outerr_date(INVALID_YEAR, NULL);
+                        outerr_date(INVALID_YEAR, NULL, NULL);
                         return -1;
                      }
 
@@ -103,7 +103,7 @@ _author   ="(leminski) `https://github.com/leminski`";
                      break;
             case 'Y':
                      if(check_param(optarg, 4) == -1) {
-                        outerr_date(INVALID_END_YEAR, NULL);
+                        outerr_date(INVALID_END_YEAR, NULL, NULL);
                         return -1;
                      }
 
@@ -122,7 +122,7 @@ _author   ="(leminski) `https://github.com/leminski`";
                          _zero = atoi(optarg);
                       }
                       else {
-                         printf(" Inserisci uno dei tre valori (1, 2, 3). Digita '-h'.\n");
+                         outerr_date(INVALID_PARAM_Z, NULL, NULL);
                          return -1;
                      }
                      break;
@@ -141,10 +141,18 @@ _author   ="(leminski) `https://github.com/leminski`";
      }
    }
 
-   if(ou == NULL) { outerr_date(ERROR_OUT_D, NULL); return -1; }
+   if(ou == NULL) {
+      outerr_date(ERROR_OUT_D, NULL, NULL);
+      return -1;
+   }
 
    if( da == 0 || mo == 0 || ye == 0 || EY == 0 || fo == NULL) {
-      outerr_date(ERROR_PARAM, NULL);
+      outerr_date(ERROR_PARAM, NULL, NULL);
+      return -1;
+   }
+
+   if(ye > EY) {
+      outerr_date(INVALID_PARAM_EY, &ye, &EY);
       return -1;
    }
 

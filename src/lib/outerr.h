@@ -26,6 +26,8 @@
 
  #define ERROR_PARAM       -15
  #define ERROR_OUT_D       -21
+ #define INVALID_PARAM_Z   -22
+ #define INVALID_PARAM_EY  -23
  #define INVALID_DAY       -16
  #define INVALID_MONTH     -17
  #define INVALID_YEAR      -18
@@ -37,4 +39,4 @@
 
 void outerr_hash(char*, char*, short int);
 void outerr_leng(short int, unsigned int);
-void outerr_date(short int, char*);
+void outerr_date(short int, unsigned short*, unsigned short*);
