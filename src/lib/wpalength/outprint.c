@@ -20,17 +20,17 @@
 #include "outprint.h"
 
 void
-  out_add_print(char* word, const unsigned length)
+  out_add_print(wchar_t* word, const unsigned length)
 
   {
-       printf(YELLOW"- [ OK ]"CLOSECOLOR BLUE"(\"%u\")"CLOSECOLOR "| %s", length, word);
+       printf("- "YELLOW"[ OK ]"CLOSECOLOR BLUE"(\"%u\")"CLOSECOLOR "| %ls", length, word);
   }
 
 void
-  out_err_print(char* word, const unsigned length)
+  out_err_print(wchar_t* word, const unsigned length)
 
   {
-       printf("-"BLUE" ["CLOSECOLOR RED" ! "CLOSECOLOR BLUE"]"CLOSECOLOR RED"(\"%u\")"CLOSECOLOR "|  %s", length, word);
+       printf("-"BLUE" ["CLOSECOLOR RED" ! "CLOSECOLOR BLUE"]"CLOSECOLOR RED"(\"%u\")"CLOSECOLOR "|  %ls", length, word);
   }
 
 void
