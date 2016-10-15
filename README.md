@@ -16,8 +16,8 @@ Email:          *atleminski@gmail.com*
 -------------------------------------------------
 
 #Upgrade new version:
-* ## wpalength(1.1.01):##      patch support US.UTF-8
-* ## wpahashword(1.1.0):    aggiunta funzionalita ulteriore al parametro '-b'
+* wpalength(1.1.01):     patch support US.UTF-8
+* wpahashword(1.1.0):    aggiunta funzionalita ulteriore al parametro '-b'
 
 [Italiano] :it:
 
