@@ -88,4 +88,19 @@ o altro, per avere una maggiore percentuale di successo.
 Inoltre è ancora in fase di "ampliamento"... ma questa versione per il momento
 puo andare piu che bene( nella maggior parte di voi ;) ).
 
+#[NEWS]
+E' possibile installarlo anche su un telefono dotato con il sistema android, appatto che sia
+installata l'app termux(reperibile dal play store).. una volta scaricata e aperta, bisogna digitare nel terminale:
+
+**apt update
+**apt install gcc
+**apt install make
+**apt install git
+
+E successivamente scaricarlo:
+
+**git clone https://github.com/leminski/WPAdiz.git
+**cd WPAdiz
+**make
+
 **Per qualsiasi tipo di segnalazione contattatemi a:** *atleminski@gmail.com*  :+1:
