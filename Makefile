@@ -31,7 +31,7 @@ install:
 	mv $(PROGRAM_LENGTH)   $(PERC)
 
 	@echo
-	@echo "Installation Succesfully"
+	@echo "Installation Completed"
 
 unistall:
 
