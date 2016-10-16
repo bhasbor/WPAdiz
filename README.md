@@ -92,15 +92,15 @@ puo andare piu che bene( nella maggior parte di voi ;) ).
 E' possibile installarlo anche su un telefono dotato con il sistema android, appatto che sia
 installata l'app termux(reperibile dal play store).. una volta scaricata e aperta, bisogna digitare nel terminale:
 
-**apt update
-**apt install gcc
-**apt install make
-**apt install git
+*##apt update
+*##apt install gcc
+*apt install make
+*apt install git
 
 E successivamente scaricarlo:
 
-**git clone https://github.com/leminski/WPAdiz.git
-**cd WPAdiz
-**make
+*git clone https://github.com/leminski/WPAdiz.git
+*cd WPAdiz
+*make
 
 **Per qualsiasi tipo di segnalazione contattatemi a:** *atleminski@gmail.com*  :+1:
