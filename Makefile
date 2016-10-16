@@ -1,5 +1,5 @@
     CC = gcc
-CFLAGS = -Wall -Wreturn-type -O2
+CFLAGS = -Wall -O2
 
 PROGRAM_LENGTH   = wpalength
 PROGRAM_DATE     = wpadate
