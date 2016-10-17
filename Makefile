@@ -1,5 +1,5 @@
     CC = gcc
-CFLAGS = -Wall -Wreturn-type -O2
+CFLAGS = -Wall -O2
 
 PROGRAM_LENGTH   = wpalength
 PROGRAM_DATE     = wpadate
@@ -31,7 +31,7 @@ install:
 	mv $(PROGRAM_LENGTH)   $(PERC)
 
 	@echo
-	@echo "Installation Succesfully"
+	@echo "Installation Completed"
 
 unistall:
 

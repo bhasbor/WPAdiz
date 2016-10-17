@@ -41,3 +41,6 @@ or to uninstall from system:
  - `cd WPAdiz`
  - `git pull`
  - `make`
+ (if installed) 
+   - `make`
+   - `make install`
