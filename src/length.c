@@ -250,7 +250,7 @@ int
                  }
               } /* End while */
 
-              printf(" Success file saved in '%s'\n", __info->name_file);
+              printf(" Successfully saved file in '%s'\n", __info->name_file);
               fclose(read); fclose(write);
 
               break;

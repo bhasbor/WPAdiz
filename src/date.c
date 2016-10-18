@@ -242,5 +242,5 @@ void
                     fprintf(write,"%d%s%d%s%d\n",d,type,m,type,y);
 
 
-       printf("\n [+] Generating output in '%s'\n\n", file_o);
+       printf("\n [+] Generated output in '%s'\n\n", file_o);
   }

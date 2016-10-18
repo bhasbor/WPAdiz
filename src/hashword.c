@@ -291,7 +291,7 @@ int
           printf("  \\\n");
           printf("   \\_(->) * Flag diminutivi activated\n\n");
 
-          printf(" [+] File '%s' create.\n\n", file_out);
+          printf(" [+] File '%s' created.\n\n", file_out);
 
           conc_diminutivi(read, write);
 
