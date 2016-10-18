@@ -1,0 +1,14 @@
+#BIN
+
+wpalength
+wpahashword
+wpadate
+
+#TEMP
+
+~
+
+#OBJECTS
+
+*.a
+*.o
