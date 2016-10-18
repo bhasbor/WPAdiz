@@ -6,9 +6,8 @@ wpadate
 
 #TEMP
 
-~
+*~
 
 #OBJECTS
 
-*.a
-*.o
+*.[ao]
