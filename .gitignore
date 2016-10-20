@@ -1,13 +1,11 @@
-#BIN
+#ALL
 
-wpalength
-wpahashword
-wpadate
+*
+#TRANNE
 
-#TEMP
-
-*~
-
-#OBJECTS
-
-*.[ao]
+!README.md
+!Makefile
+!src/
+!file/
+!INSTALL
+!LICENSE
