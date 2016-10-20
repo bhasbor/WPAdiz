@@ -175,7 +175,7 @@ void
                	       "Parameters:\n\n "
    	  	       "-d :  Giorno\n "
   	               "-m :  Mese\n "
-                       "-y :  Anno di inizio(Se non viene immesso,assume il valore 0)\n "
+                       "-y :  Anno di inizio\n "
   	               "-Y :  Anno di fine\n "
     	               "-f :  Specifica il formato:(es.1/2/1234, 1-2-1234, 121234)\n "
    	               "-o :  File out\n\n "
