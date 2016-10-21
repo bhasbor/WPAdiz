@@ -17,10 +17,12 @@
 
  /* Define for programm legth */
 
+ #define MAX                  42978990
+
  #define ERROR_PARAM_F       -9
  #define ERROR_PARAM_E       -10
  #define INVALID_PARAM_L     -11
- #define INVALID_NUMBER      -12
+ #define ERROR_L             -12
 
  /* Define for programm date */
 
@@ -37,6 +39,6 @@
  #define MAX_YEAR          3000
  #define MAX_END_YEAR      3000
 
-void outerr_hash(char*, char*, short int);
-void outerr_leng(short int, unsigned int);
-void outerr_date(short int, unsigned short*, unsigned short*);
+void outerr_hash(char*, char*, short);
+void outerr_leng(short, char*);
+void outerr_date(short, unsigned short*, unsigned short*);

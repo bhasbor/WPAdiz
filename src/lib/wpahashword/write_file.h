@@ -22,5 +22,5 @@
 #include <string.h>
 #include <ctype.h>
 
-int write_file(char*, char*, char*, int16_t*, char*, uint8_t*, uint8_t, unsigned*, unsigned*);
+int write_file(char*, char*, char*, int16_t*, char*, uint8_t*, unsigned*, unsigned*);
 void _hash_touplower(char*, int, uint8_t);

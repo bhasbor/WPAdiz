@@ -19,12 +19,8 @@
 
 #include "write_file.h"
 
-#define WRITE_HASH              fprintf(write, "%s%s\n", buffer, buffer2);     \
-                                fprintf(write, "%se%s\n", buffer, buffer2);    \
-                                fprintf(write, "%sE%s\n", buffer, buffer2);    \
-
 int
-  write_file(char* file, char* file_out, char* file_two, int16_t* check_toupper, char* word, uint8_t* _tratt, uint8_t hash, unsigned* num, unsigned* num2)
+  write_file(char* file, char* file_out, char* file_two, int16_t* check_toupper, char* word, uint8_t* _tratt, unsigned* num, unsigned* num2)
 
   {
        unsigned error_up = 0;
@@ -38,8 +34,6 @@ int
        char buffer[9000];
 
        write = fopen(file_out, "aw");
-
-      if( hash == 0 ) {
 
          switch( *_tratt )
 
@@ -253,55 +247,6 @@ int
                              }
                     }
          } /* End switch tratt */
-      }    /* End hash */
-      else {
-
-         read2 = fopen(file, "r");
-
-         char buffer2[9000];
-
-         while( (fscanf(read, "%s", buffer) ) != EOF) {
-
-            while( (fscanf(read2, "%s", buffer2) ) != EOF) {
-
-               if( strcmp(buffer, buffer2) ) {
-
-                  if(*check_toupper == -1)  {
-                     WRITE_HASH
-                  }
-                  else if(*check_toupper == 0) {
-
-                     buffer[0] = toupper(buffer[0]);
-
-	             WRITE_HASH
-
-                     buffer[0] = tolower(buffer[0]);
-
-                     buffer2[0] = toupper(buffer2[0]);
-
-                     WRITE_HASH
-
-                     buffer[0] = toupper(buffer[0]);
-
-                     WRITE_HASH
-
-                     buffer[0] = tolower(buffer[0]);
-                     buffer2[0] = tolower(buffer2[0]);
-
-                     _hash_touplower(buffer, sizeof(buffer), 0);
-                     _hash_touplower(buffer2, sizeof(buffer), 0);
-
-                     WRITE_HASH
-
-                     _hash_touplower(buffer, sizeof(buffer), 1);
-                     _hash_touplower(buffer2, sizeof(buffer), 1);
-                  }
-               }
-            }
-            rewind(read2);
-         }
-         fclose(read2);
-     }     /* End else */
 
    fclose(read); fclose(write);
 

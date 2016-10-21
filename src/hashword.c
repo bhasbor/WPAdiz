@@ -29,7 +29,6 @@
  /* Prototipi */
  void usage(char*);
  void conc_diminutivi(FILE*, FILE*);
- int  control(char*, char*, char*, char*, uint8_t*, uint8_t*, int16_t*, uint8_t*);
  int  parser(char*, const unsigned int, char*, char*);
  int  concatenation(char*, char*, char*, char*, uint8_t*, int16_t*, uint8_t*);
 
@@ -41,7 +40,7 @@ int main (int argc, char* argv[]) {
     */
 
 _date     ="2016";
-_version  ="v.1.1";
+_version  ="v.1.2";
 _programm ="WPAhashword";
 _author   ="(leminski) `https://github.com/leminski`";
 
@@ -55,12 +54,12 @@ _author   ="(leminski) `https://github.com/leminski`";
 
    FILE *read;
    int ch;
-   uint8_t hash = 0, _tratt = 0, flag_diminutivi = 0;
+   uint8_t _tratt = 0, flag_diminutivi = 0;
    int16_t up = -1;
    char *word = NULL, *file = NULL, *file_two = NULL, *outfile = NULL, temp[9000], number[9000], number2[9000];
 
    opterr = 0;
-   while( (ch = getopt(argc, argv, "hf:r:c:o:tb:d")) != -1) {
+   while( (ch = getopt(argc, argv, "hf:r:c:o:b:d")) != -1) {
 
       switch(ch) {
 
@@ -171,17 +170,6 @@ _author   ="(leminski) `https://github.com/leminski`";
                   outfile = optarg;
                   break;
 
-         case 't':
-
-                  if(file_two != NULL) {
-
-                     outerr_hash(NULL, NULL, ERROR_PARAM_T);
-                     return -1;
-                  }
-
-                  hash = 1;
-                  break;
-
          case '?': default:
                   printf("wpahashword: Unknow parameter '-%c' \nDigit: '-h'\n", optopt);
                   return -1;
@@ -206,12 +194,12 @@ _author   ="(leminski) `https://github.com/leminski`";
       return -1;
    }
 
-   if(flag_diminutivi == 1 && (file_two != NULL || hash == 1)) {
+   if(flag_diminutivi == 1 && file_two != NULL) {
       outerr_hash(NULL, NULL, ERROR_PARAM_D);
       return -1;
    }
 
-   control(word, file, file_two, outfile, &hash, &_tratt, &up, &flag_diminutivi);
+   concatenation(file, outfile, file_two, word, &_tratt, &up, &flag_diminutivi);
 
   return 0;
 
@@ -235,7 +223,6 @@ void
              "-d :   Crea per ogni parola contenuta in un file ('-f') il suo diminutivo\n "
              "-r :   Secondo file di input, e quindi si possono concatenare le parole\n "
              "       dei due file\n "
-             "-t :   Disposizioni di tutte le parole contenute in un singolo file\n "
              "-b :   Flag (valore):\n "
              "                     0       : per avere tutte le parole in maiuscolo\n "
              "                     1 a 255 : indica a quale posizione si vuole avere\n "
@@ -247,32 +234,9 @@ void
   }
 
 int
-  control(char* word, char* file_in, char* file_two, char* file_out, uint8_t* boolean /* 1 - hash, 0 - concatenation */, uint8_t* tratt, int16_t* up, uint8_t* flag_diminutivi)
-
-  {
-      if( *boolean == 1 ) {
-
-         printf(" * Flag concatenation activated\n");
-
-         write_file(file_in, file_out, NULL, *&up, NULL, NULL, 1, NULL, NULL);
-
-         printf("\n [+] File '%s' created.\n", file_out);
-
-         return 0;
-      }
-      else if( *boolean == 0 ) {
-
-         concatenation(file_in, file_out, file_two, word, tratt, *&up, flag_diminutivi);
-      }
-
-      return 0;
-  }
-
-int
   concatenation(char* file, char* file_out, char* file_two, char* word, uint8_t* tratt, int16_t* up, uint8_t* flag_diminutivi)
 
   {
-
        if( word == NULL && num == 0 && num2 == 0) {
           outerr_hash(NULL, NULL, ERROR_PARAM_C);
           return -1;
@@ -300,7 +264,7 @@ int
           return 0;
        }
 
-       int error_up = write_file(file, file_out, file_two, *&up, word, *&tratt, 0, &num, &num2);
+       int error_up = write_file(file, file_out, file_two, *&up, word, *&tratt, &num, &num2);
 
        if(error_up > 0)
           printf("\n [+] File '%s' created: `(%u words omitted) (why? Didit -h for help)`.\n", file_out, error_up);

@@ -27,7 +27,7 @@
 #include "outerr.h"
 
 void  /*Programm hashword */
-  outerr_hash(char* buffer, char* buffer2, short int _flag_err)
+  outerr_hash(char* buffer, char* buffer2, short _flag_err)
 
   {
        switch(_flag_err) {
@@ -80,13 +80,13 @@ void  /*Programm hashword */
   }
 
 void  /* Programm length */
-  outerr_leng(short int _flag_err, unsigned int number)
+  outerr_leng(short _flag_err, char* number)
 
   {
        switch(_flag_err) {
 
           case INVALID_PARAM_L:
-                printf("wpalength: INVALID value %u in parameter '-l'\n", number);
+                printf("wpalength: INVALID value %s in parameter '-l' (MIN 1 & MAX %u)\n", number, MAX);
 
                 break;
           case ERROR_PARAM_E:
@@ -97,8 +97,8 @@ void  /* Programm length */
                 printf("wpalength: ERROR insert your file\n");
 
                 break;
-          case INVALID_NUMBER:
-                printf("wpalength: INVALID -l accetta parametri numerici\n");
+         case ERROR_L:
+                printf("wpalength: ERROR insert length '-l'\n");
 
                 break;
        }

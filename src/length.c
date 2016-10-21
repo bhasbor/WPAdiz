@@ -27,8 +27,6 @@
 #include "lib/outerr.h"
 #include "lib/wpalength/outprint.h"
 
- #define MAX 42978990
-
  struct _file_information {
                             size_t size_file;              /* Byte size file */
                             char* name_file;               /* Name file */
@@ -44,7 +42,6 @@ unsigned long charmax = 0;
  void pars_leng_char_verb(FILE*, struct _file_information *, const unsigned*);
  int  pars_leng_char(FILE*, struct _file_information *, const unsigned*);
  void file_size(FILE*, struct _file_information *);
- int  check_if_int(char*);
  int  check_length_save(struct _file_information *, const unsigned*, uint8_t*, uint8_t*);
  int  checkspace(wchar_t*);
  int  automatic_erase(struct _file_information *, const unsigned*);
@@ -57,7 +54,7 @@ int main(int argc, char* argv[]) {
     */
 
 _date     ="2016";
-_version  ="v.1.0.01";
+_version  ="v.1.0.02";
 _programm ="WPAlength";
 _author   ="(leminski) `https://github.com/leminski`";
 
@@ -71,7 +68,7 @@ _author   ="(leminski) `https://github.com/leminski`";
    setlocale(LC_ALL, "en_US.UTF-8");   /* Codifica Unicode US 8 */
 
    int ch;
-   unsigned leng = 0;
+   unsigned  leng = 0;
    uint8_t verbose = 0, whatsave = 1;
    char condition[0];
 
@@ -113,12 +110,13 @@ _author   ="(leminski) `https://github.com/leminski`";
 
          case 'l': /* lunghezza parola */
 
-	          if( check_if_int(optarg) == INVALID_PARAM_L ) {
-	             outerr_leng(INVALID_PARAM_L, atoi(optarg));
-	             return -1;
-	          }
+                   if( atoi(optarg) > MAX || atoi(optarg) <= 0 ) {
+                      outerr_leng(INVALID_PARAM_L, optarg);
+                      return -1;
+                   }
 
                   leng = atoi(optarg);
+
                   break;
 
          case 's': /* Salvataggio parole di lunghezza inferiore a '-l */
@@ -165,6 +163,11 @@ _author   ="(leminski) `https://github.com/leminski`";
 
    if(__information_file.name_file == NULL) {
       outerr_leng(ERROR_PARAM_F, 0);
+      return -1;
+   }
+
+   if( leng == 0) {
+      outerr_leng(ERROR_L, NULL);
       return -1;
    }
 
@@ -292,21 +295,6 @@ int
 
          if( ( ( wcslen(buffer) - check ) ) < *leng)
             lengshort++;
-      }
-      return 0;
-  }
-
-int
-  check_if_int(char* buffer)
-
-  {
-
-      if( !atoi(buffer) ) {                          /* Se non e un numero */
-         return INVALID_NUMBER;
-      }
-
-      if( atoi(buffer) > MAX || atoi(buffer) <= 0) {
-         return INVALID_PARAM_L;
       }
       return 0;
   }
