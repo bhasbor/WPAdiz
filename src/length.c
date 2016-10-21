@@ -110,7 +110,7 @@ _author   ="(leminski) `https://github.com/leminski`";
 
          case 'l': /* lunghezza parola */
 
-                   if( atoi(optarg) > MAX || atoi(optarg) <= 0 ) {
+                   if( atoi(optarg) <= 0 || atoi(optarg) > MAX ) {
                       outerr_leng(INVALID_PARAM_L, optarg);
                       return -1;
                    }
