@@ -23,7 +23,7 @@ Email:          *atleminski@gmail.com*
 
 ##[21/10/2016]
 
-* wpahashword(1.2):      rimosso parametro -t (inutile)
+* wpahashword(1.2.0):    rimosso parametro -t (inutile)
 * wpalength(1.1.02):     perfezionato parametro -l
 
 [Italiano] :it:

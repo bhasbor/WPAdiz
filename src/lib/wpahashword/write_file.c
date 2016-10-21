@@ -259,6 +259,7 @@ void
   {
        /* Maiuscolo */
        if(check == 0) {
+
           /* converte tutto l array in maiuscolo */
           for(unsigned int i = 0; i <= size; i++) {
 

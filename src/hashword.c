@@ -40,7 +40,7 @@ int main (int argc, char* argv[]) {
     */
 
 _date     ="2016";
-_version  ="v.1.2";
+_version  ="v.1.2.0";
 _programm ="WPAhashword";
 _author   ="(leminski) `https://github.com/leminski`";
 
