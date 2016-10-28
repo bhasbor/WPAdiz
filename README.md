@@ -100,7 +100,7 @@ puo andare piu che bene( nella maggior parte di voi ;) ).
 installata l'app termux(reperibile dal play store).. una volta scaricata e aperta, bisogna digitare nel terminale:**
 
 * apt update
-* apt install gcc
+* apt install gcc (oppure in caso di problemi) * apt install clang
 * apt install make
 * apt install git
 
