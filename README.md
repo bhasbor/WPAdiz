@@ -26,6 +26,11 @@ Email:          *atleminski@gmail.com*
 * wpahashword(1.2.0):    rimosso parametro -t (inutile)
 * wpalength(1.1.02):     perfezionato parametro -l
 
+##[30/10/2016]
+* wpalength(1.1.03)      aggiunto controllo ulteriore sulla lunghezza della parola
+                         se è maggiore a 64 parole(Il massimo della lunghezza per una
+                         password di tipo wireless)
+
 [Italiano] :it:
 
 ####Premessa:####

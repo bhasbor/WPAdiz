@@ -17,7 +17,7 @@
 
  /* Define for programm legth */
 
- #define MAX                  42978990
+ #define MAX                  255
 
  #define ERROR_PARAM_F       -9
  #define ERROR_PARAM_E       -10
