@@ -39,7 +39,8 @@ void
   {
        printf("-> Lettura da file '%s' Completata.\n", file);
        printf("-> Sono presenti circa \"%lu\" parole.\n", *charmax);
-       printf("-> Parole con meno di %u caratteri: "YELLOW"%u"CLOSECOLOR" (found words exceeding 64("YELLOW"%u"CLOSECOLOR")\n", leng, *lengshort, max_leng_wpa);
+       printf("-> Parole con meno di %u caratteri: "YELLOW"%u"CLOSECOLOR"\n"
+              "-> Parole superiori a 64           ("YELLOW"%u"CLOSECOLOR")\n", leng, *lengshort, max_leng_wpa);
   }
 
 void
