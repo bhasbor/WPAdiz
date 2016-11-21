@@ -31,12 +31,8 @@ Email:          *atleminski@gmail.com*
 
 
 
-
-
-
-
-[16/11/2016]
-wpalength(1.2.04)      espansa la possibilità del parametro "-v" (verbose).
+##[16/11/2016]
+* wpalength(1.2.04)      espansa la possibilità del parametro "-v" (verbose).
                          inoltre è stato migliorato il controllo di rilevamento dei caratteri
                          di spaziatura inutili(Tabulazioni) e la loro rimozione sarà automatica
                          digitando il parametro "-e"
