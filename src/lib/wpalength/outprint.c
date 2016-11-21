@@ -20,23 +20,24 @@
 #include "outprint.h"
 
 void
-  out_add_print(wchar_t* word, const unsigned length)
+  out_add_print(wchar_t* word, const unsigned length, const unsigned tab)
 
   {
-       printf("- "YELLOW"[ OK ]"CLOSECOLOR BLUE"(\"%u\")"CLOSECOLOR "| %ls", length, word);
+       printf("- "YELLOW"[ OK ]"CLOSECOLOR BLUE"(\"%u\") "CLOSECOLOR BLUE"("CLOSECOLOR"%u"BLUE")"CLOSECOLOR " | %ls", length, tab, word);
   }
 
 void
-  out_err_print(wchar_t* word, const unsigned length)
+  out_err_print(wchar_t* word, const unsigned length, const unsigned tab)
 
   {
-       printf("-"BLUE" ["CLOSECOLOR RED" ! "CLOSECOLOR BLUE"]"CLOSECOLOR RED"(\"%u\")"CLOSECOLOR "|  %ls", length, word);
+       printf("-"BLUE" ["CLOSECOLOR RED" ! "CLOSECOLOR BLUE"]"CLOSECOLOR RED" (\"%u\")"CLOSECOLOR BLUE" ("CLOSECOLOR"%u"BLUE")"CLOSECOLOR" | %ls", length, tab, word);
   }
 
 void
   out_print_read_file(char* file, const unsigned long* charmax, const uint8_t leng, const unsigned* lengshort, const unsigned max_leng_wpa)
 
   {
+
        printf("-> Lettura da file '%s' Completata.\n", file);
        printf("-> Sono presenti circa \"%lu\" parole.\n", *charmax);
        printf("-> Parole con meno di %u caratteri: "YELLOW"%u"CLOSECOLOR"\n"
@@ -47,5 +48,5 @@ void
   out_print_cancell(const unsigned* lengshort, const unsigned long* charmax)
 
   {
-       printf("\n Completato: Parole cancellate "YELLOW"%u"CLOSECOLOR", su "YELLOW"%lu"CLOSECOLOR" parole.\n\n", *lengshort, *charmax);
+       printf("\n Completato: Parole cancellate "YELLOW"%u"CLOSECOLOR", su "YELLOW"%lu"CLOSECOLOR" parole.\n", *lengshort, *charmax);
   }

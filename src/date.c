@@ -61,7 +61,7 @@ _author   ="(leminski) `https://github.com/leminski`";
 
    opterr = 0;
    optarg = NULL;
-   while( ( ch=getopt(argc,argv,"Dd:m:y:Y:z:f:o:h") ) != -1 ) {
+   while( ( ch = getopt(argc,argv,"Dd:m:y:Y:z:f:o:h") ) != -1 ) {
 
       switch(ch) {
 
