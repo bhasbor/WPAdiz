@@ -30,8 +30,8 @@ Email:          *atleminski@gmail.com*
 * wpalength(1.1.03)      aggiunto controllo ulteriore sulla lunghezza della parola
                          se è maggiore a 64 caratteri(Il massimo della lunghezza per una
                          password di tipo wireless)
-##[16/11/2016]
-* wpalength(1.2.04)      espansa la possibilità del parametro "-v" (verbose).
+[16/11/2016]
+  wpalength(1.2.04)      espansa la possibilità del parametro "-v" (verbose).
                          inoltre è stato migliorato il controllo di rilevamento dei caratteri
                          di spaziatura inutili(Tabulazioni) e la loro rimozione sarà automatica
                          digitando il parametro "-e"
