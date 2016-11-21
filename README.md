@@ -33,10 +33,12 @@ Email:          *atleminski@gmail.com*
 
 ##[16/11/2016]
 * wpalength(1.2.04)      espansa la possibilità del parametro "-v" (verbose).
-                         inoltre è stato migliorato il controllo di rilevamento dei caratteri
-                         di spaziatura inutili(Tabulazioni) e la loro rimozione sarà automatica
-                         digitando il parametro "-e"
-
+                         (Visitare l' help del tool per ulteriori dettagli).
+                         Inoltre, il parametro -v, indica ( tra le "()" ) il numero di 
+                         tabulazioni presenti nella parola, e la loro rimozione sarà
+                         automatica digitando il parametro -e. Altre migliorie riguardano
+                         il controllo di rilevamento di altri tipi di caratteri
+                         di spaziatura inutili.
 
 [Italiano] :it:
 
