@@ -370,7 +370,7 @@ void
 
        for(i; i <= wcslen(word); i++) {
 
-          if( word[i] >= 0x00 && word[i] <= 0x08 || word[i] >= 0xB && word[i] <= 0x1F ) {
+          if( ( word[i] >= 0x00 && word[i] <= 0x08 ) || ( word[i] >= 0xB && word[i] <= 0x1F ) ) {
              trash++;
           }
 
